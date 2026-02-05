@@ -1,0 +1,3248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>浙江省数学高职考试每日练习</title>
+    <!-- 引入MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        // 简化MathJax配置，避免复杂的回调
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true,
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                ignoreHtmlClass: 'tex2jax_ignore',
+                processHtmlClass: 'tex2jax_process'
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .student-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+        
+        .btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-start {
+            background-color: #2ecc71;
+            width: 100%;
+            margin-top: 10px;
+            font-size: 18px;
+            padding: 14px;
+        }
+        
+        .btn-start:hover {
+            background-color: #27ae60;
+        }
+        
+        .btn-submit {
+            background-color: #e74c3c;
+            margin-top: 20px;
+            width: 100%;
+            padding: 14px;
+            font-size: 18px;
+        }
+        
+        .btn-submit:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-reset {
+            background-color: #95a5a6;
+            margin-top: 10px;
+            width: 100%;
+            padding: 12px;
+        }
+        
+        .btn-reset:hover {
+            background-color: #7f8c8d;
+        }
+        
+        .questions-container {
+            display: none;
+        }
+        
+        .question {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #9b59b6;
+            position: relative;
+            counter-increment: question-counter;
+        }
+        
+        .question:before {
+            content: "题目 " counter(question-counter) ":";
+            position: absolute;
+            top: -12px;
+            left: 15px;
+            background-color: #9b59b6;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .question-text {
+            font-size: 17px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        
+        .options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .option:hover {
+            border-color: #3498db;
+            background-color: #f0f8ff;
+        }
+        
+        .option.selected {
+            border-color: #2ecc71;
+            background-color: #e8f8ef;
+        }
+        
+        .option input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .result-container {
+            display: none;
+            background-color: #f8f9fa;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+            border-top: 4px solid #2ecc71;
+        }
+        
+        .score-display {
+            font-size: 60px;
+            font-weight: 700;
+            color: #2ecc71;
+            margin: 20px 0;
+        }
+        
+        .score-text {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .student-info-display {
+            background-color: #e8f4fc;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+            display: inline-block;
+            font-size: 18px;
+        }
+        
+        .date-display {
+            color: #7f8c8d;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .note {
+            background-color: #fff3cd;
+            border: 1px solid #ffecb5;
+            color: #856404;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .correct-answer {
+            color: #27ae60;
+            font-weight: 600;
+        }
+        
+        .wrong-answer {
+            color: #e74c3c;
+            font-weight: 600;
+        }
+        
+        .answer-feedback {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .options {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .btn-start, .btn-submit, .btn-reset {
+                width: auto;
+                min-width: 200px;
+            }
+        }
+        
+        .question-counter {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .total-questions {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        /* MathJax样式调整 */
+        .mjx-chtml {
+            font-size: 1.1em !important;
+        }
+        
+        .question-text mjx-container {
+            display: inline !important;
+        }
+        
+        /* 确保选项中的数学公式正确显示 */
+        .option mjx-container {
+            display: inline-block !important;
+            vertical-align: middle !important;
+        }
+        
+        .option label {
+            display: flex !important;
+            align-items: center !important;
+            width: 100% !important;
+            cursor: pointer !important;
+        }
+        
+        /* 错误提示样式 */
+        .error-message {
+            color: #e74c3c;
+            background-color: #ffeaea;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>浙江省数学高职考试每日练习</h1>
+            <p class="subtitle">基于总题库复习 • 每日十题</p>
+        </header>
+        
+        <div class="student-info">
+            <h2>学生信息</h2>
+            <div class="form-group">
+                <label for="studentName">请输入您的姓名：</label>
+                <input type="text" id="studentName" placeholder="请输入姓名">
+                <div id="nameError" class="error-message"></div>
+            </div>
+            <button class="btn btn-start" id="startBtn">开始今日练习</button>
+        </div>
+        
+        <div class="questions-container" id="questionsContainer">
+            <h2>今日练习（每题1分，共10分）</h2>
+            <div class="question-counter">共 <span class="total-questions">10</span> 题，请完成所有题目后提交</div>
+            <div id="questionsList">
+                <!-- 题目将通过JavaScript动态生成 -->
+            </div>
+            
+            <button class="btn btn-submit" id="submitBtn">提交答案</button>
+            <button class="btn btn-reset" id="resetBtn">重新开始</button>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <h2>练习结果</h2>
+            <div class="date-display" id="dateDisplay"></div>
+            <div class="student-info-display" id="studentInfoDisplay"></div>
+            <div class="score-text">您的得分是：</div>
+            <div class="score-display" id="scoreDisplay">0/10</div>
+            <div id="resultDetails"></div>
+            
+            <div class="note">
+                <p>请截屏此页面保存成绩，或向老师提交此成绩截图。</p>
+                <p>温馨提示：每日练习题目随机生成，每位同学的题目可能不同。</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2023 浙江省数学高职考试复习系统 | 基于总题库</p>
+    </div>
+
+    <script>
+        const questionBank = [
+            {
+                question: "设全集$U=\\{1,2,3,4,5,6\\}$，已知集合$S=\\{1,4,5\\}$，$T=\\{2,3,4\\}$，则$S∪(∁_U T)$等于（ ）",
+                options: ["$\\{1,4,5,6\\}$", "$\\{1,5\\}$", "$\\{4\\}$", "$\\{1,2,3,4,5\\}$"],
+                correctAnswer: 0,
+                explanation: "先求补集：$∁_U T = \\{1,5,6\\}$，再求并集：$S∪∁_U T = \\{1,4,5\\}∪\\{1,5,6\\} = \\{1,4,5,6\\}$。"
+            },
+            {
+                question: "方程组$\\begin{cases} x=2 \\\\ y=1 \\end{cases}$的解构成的集合是（ ）",
+                options: ["$\\{x=2,y=1\\}$", "$(2,1)$", "$\\{(2,1)\\}$", "$∅$"],
+                correctAnswer: 2,
+                explanation: "方程组的解是一个有序数对$(2,1)$，用集合表示应为点集$\\{(2,1)\\}$。"
+            },
+            {
+                question: "已知集合$A=\\{1,3,5,6\\}$，$B=\\{2,3,6,8\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{3\\}$", "$\\{1,5\\}$", "$\\{3,6\\}$", "$\\{1,2,3,5,6,8\\}$"],
+                correctAnswer: 2,
+                explanation: "取两个集合的公共元素：$3$和$6$。"
+            },
+            {
+                question: "已知集合$A=\\{0\\}$，集合$B=\\{0,2\\}$，下列选项正确的是（ ）",
+                options: ["$A=∅$", "$A∈B$", "$A∩B=B$", "$A∪B=B$"],
+                correctAnswer: 3,
+                explanation: "$A$是$B$的子集，因此$A∪B=B$。"
+            },
+            {
+                question: "已知集合$A=\\{x|0≤x≤4\\}$，$B=\\{x|2≤x<6\\}$，则$A∪B=$（ ）",
+                options: ["$\\{x|0≤x≤6\\}$", "$\\{x|2≤x≤4\\}$", "$\\{x|0≤x<6\\}$", "$\\{x|0≤x≤4\\}$"],
+                correctAnswer: 2,
+                explanation: "并集取所有元素，最小从$0$开始，最大到$6$（不包括$6$），即$\\{x|0≤x<6\\}$。选C。"
+            },
+            {
+                question: "已知集合$A=\\{x|x^2-1=0\\}$，$B=\\{-1,0,1,2\\}$，则$A∩B=$（ ）",
+                options: ["$\\{-1,0,1,2\\}$", "$\\{0,1,2\\}$", "$\\{1,-1\\}$", "$\\{-1,1,2\\}$"],
+                correctAnswer: 2,
+                explanation: "$A=\\{-1,1\\}$，与$B$的交集为$\\{-1,1\\}$。"
+            },
+            {
+                question: "设集合$A=\\{-1,0\\}$，$B=\\{0,1,2\\}$，则$A∩B=$（ ）",
+                options: ["$\\{-1,0\\}$", "$\\{0\\}$", "$\\{0,1,2\\}$", "$\\{-1,0,1,2\\}$"],
+                correctAnswer: 1,
+                explanation: "公共元素只有$0$。"
+            },
+            {
+                question: "已知集合$A=\\{x|-1<x<3\\}$，$B=\\{1,2,3,4\\}$，则$A∩B=$（ ）",
+                options: ["$\\{1\\}$", "$\\{1,2\\}$", "$\\{2,3\\}$", "$\\{2,3,4\\}$"],
+                correctAnswer: 1,
+                explanation: "$A$中的元素在区间$(-1,3)$内，$B$中在该区间内的元素是$1$和$2$。"
+            },
+            {
+                question: "已知集合$A=\\{-1,1,0\\}$，$B=\\{x|x<3,x∈N\\}$，则$A∩B=$（ ）",
+                options: ["$\\{0,1\\}$", "$\\{-1,1,2,3\\}$", "$\\{0,1,2\\}$", "$\\{-1,0,1,2\\}$"],
+                correctAnswer: 0,
+                explanation: "$B=\\{0,1,2\\}$，与$A$的交集为$\\{0,1\\}$。"
+            },
+            {
+                question: "已知集合$A=\\{x|-2≤x≤3\\}$，$B=\\{x∈N|-3≤x≤1\\}$，则$A∩B=$（ ）",
+                options: ["$\\{x|-2≤x≤3\\}$", "$\\{-2,-1,0,1\\}$", "$\\{0,1\\}$", "$\\{x|0≤x≤1\\}$"],
+                correctAnswer: 2,
+                explanation: "$B=\\{0,1\\}$，且在$A$的范围内。"
+            },
+            {
+                question: "已知集合$A=\\{x|x=2k,k∈Z\\}$，$B=\\{0,1,2,3,4,5\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{1,3,5\\}$", "$\\{0,1,2,3,4,5\\}$", "$\\{2,4\\}$", "$\\{0,2,4\\}$"],
+                correctAnswer: 3,
+                explanation: "$A$是偶数集，与$B$的交集为偶数元素$\\{0,2,4\\}$。"
+            },
+            {
+                question: "若集合$P=\\{1,2,3\\}$，$S=\\{2,3,4\\}$，则下列命题正确的是（ ）",
+                options: ["$P∩S=\\{2\\}$", "$P∪S=\\{1,2,2,3,3,4\\}$", "$∅∈P$", "$2∈P$"],
+                correctAnswer: 3,
+                explanation: "$2$是$P$的元素，故$2∈P$正确。"
+            },
+            {
+                question: "设全集$U=\\{0,1,2,3,4\\}$，集合$A$满足$∁_U A=\\{2,3\\}$，则（ ）",
+                options: ["$0∉A$", "$1∈A$", "$2∈A$", "$3∈A$"],
+                correctAnswer: 1,
+                explanation: "$∁_U A=\\{2,3\\}$，则$A=\\{0,1,4\\}$，所以$1∈A$。"
+            },
+            {
+                question: "若集合$A=\\{-1,2,3,5\\}$，集合$B=\\{x||x|≤3\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{-1,2,3\\}$", "$[-3,3]$", "$\\{-1,-2,-3,0,1,2,3,5\\}$", "$\\{-1,2,3,5\\}$"],
+                correctAnswer: 0,
+                explanation: "$B=\\{x|-3≤x≤3\\}$，与$A$的交集为$\\{-1,2,3\\}$。"
+            },
+            {
+                question: "集合$\\{x|x≤0或x>2\\}$用区间表示为（ ）",
+                options: ["$(0,2]$", "$[0,2)$", "$(-∞,0)∪[2,+∞)$", "$(-∞,0]∪(2,+∞)$"],
+                correctAnswer: 3,
+                explanation: "小于等于$0$和大于$2$的实数集，注意端点是否包含。"
+            },
+            {
+                question: "已知集合$A=\\{x|x^2=0且x∈R\\}$，下列关系式错误的是（ ）",
+                options: ["$0∈A$", "$\\{0\\}=A$", "$\\{0\\}⊆A$", "$∅=A$"],
+                correctAnswer: 3,
+                explanation: "$A=\\{0\\}$，不是空集，故$∅=A$错误。"
+            },
+            {
+                question: "已知集合$A=\\{-1,0,1,2,3\\}$，集合$B=\\{0,1\\}$，则$A∪B=$（ ）",
+                options: ["$\\{-1,0,1\\}$", "$\\{0\\}$", "$\\{0,1\\}$", "$\\{-1,0,1,2,3\\}$"],
+                correctAnswer: 3,
+                explanation: "并集取所有元素，结果为$A$本身。"
+            },
+            {
+                question: "已知集合$A=\\{-2,-1,0,1\\}$，集合$B=\\{0,1,2,3\\}$，则$A∩B=$（ ）",
+                options: ["$0,1$", "$\\{0,1\\}$", "$(0,1)$", "$\\{-2,-1,0,1,2,3\\}$"],
+                correctAnswer: 1,
+                explanation: "公共元素为$0$和$1$。"
+            },
+            {
+                question: "已知集合$A=\\{x|x<5且x∈N\\}$，$B=\\{3,4,5\\}$，则$A∩B=$（ ）",
+                options: ["$\\{3,4,5\\}$", "$\\{3,4\\}$", "$\\{0,1,2,3,4,5\\}$", "$\\{1,2,3,4,5\\}$"],
+                correctAnswer: 1,
+                explanation: "$A=\\{0,1,2,3,4\\}$，与$B$的交集为$\\{3,4\\}$。"
+            },
+            {
+                question: "已知集合$M=\\{-3,-1,0,1,2,3\\}$，集合$P=\\{-1,0,1,2\\}$，则$M∩P$等于（ ）",
+                options: ["$\\{-3,-1,0,1,2\\}$", "$\\{-1,0,1,2\\}$", "$\\{-1,0,1\\}$", "$\\{-3,-1,0,1,2,3\\}$"],
+                correctAnswer: 1,
+                explanation: "取公共元素$\\{-1,0,1,2\\}$。"
+            },
+            {
+                question: "若集合$A=\\{-1,0,1\\}$，集合$B=\\{1,2,3\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{0,1,2,3\\}$", "$\\{1\\}$", "$\\{-1,0,1,2,3\\}$", "$\\{1,2,3\\}$"],
+                correctAnswer: 2,
+                explanation: "并集取所有元素，$A∪B=\\{-1,0,1,2,3\\}$。"
+            },
+            {
+                question: "已知集合$A=\\{a,-1,1,3,b\\}$，$B=\\{0,2,b,3\\}$，则$A∩B=$（ ）",
+                options: ["$\\{b\\}$", "$\\{a,-1,1,3,b,0,2\\}$", "$\\{a,b\\}$", "$\\{3,b\\}$"],
+                correctAnswer: 3,
+                explanation: "公共元素为$3$和$b$，故$A∩B=\\{3,b\\}$。"
+            },
+            {
+                question: "设全集$U=(1,+∞)$，已知集合$A=(π,7]$，则$∁_U A=$（ ）",
+                options: ["$(-∞,π]$", "$(7,+∞)$", "$(-∞,π]∪(7,+∞)$", "$(1,π]∪(7,+∞)$"],
+                correctAnswer: 3,
+                explanation: "补集是全集$U$中除去$A$的部分，即$(1,π]∪(7,+∞)$。"
+            },
+            {
+                question: "设全集$U=\\{0,1,2,3,4,5,6,7,8,9\\}$，集合$M=\\{2,4,5\\}$，$Q=\\{1,3,4,6,7\\}$，$P=\\{0,5,8\\}$。下列错误的是（ ）",
+                options: ["$M∪P=\\{0,2,4,5,8\\}$", "$∁_U Q=\\{1,2,3,4,6,7,9\\}$", "$P∩M=\\{5\\}$", "$U∩Q=Q$"],
+                correctAnswer: 1,
+                explanation: "$∁_U Q$应为$\\{0,2,5,8,9\\}$，选项B错误。"
+            },
+            {
+                question: "满足条件$\\{0,1\\}∩P=∅$的集合$P$有（ ）",
+                options: ["$0$个", "$1$个", "$2$个", "无数个"],
+                correctAnswer: 3,
+                explanation: "只要$P$中不含$0$和$1$即可，这样的集合有无数个。"
+            },
+            {
+                question: "已知集合$A=\\{(x,y)|x^2+y^2=1\\}$，$B=\\{(x,y)|y=x\\}$，则$A∩B$中元素的个数为（ ）",
+                options: ["$3$", "$2$", "$1$", "$0$"],
+                correctAnswer: 1,
+                explanation: "联立方程解得两个交点：$\\left(\\frac{\\sqrt{2}}{2},\\frac{\\sqrt{2}}{2}\\right)$和$\\left(-\\frac{\\sqrt{2}}{2},-\\frac{\\sqrt{2}}{2}\\right)$。"
+            },
+            {
+                question: "已知集合$A=\\{1,3\\}$，$B=\\{x|1≤x≤5\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{1,5\\}$", "$\\{1,3\\}$", "$\\{1,2,3\\}$", "$∅$"],
+                correctAnswer: 1,
+                explanation: "$A$中的元素$1$和$3$都在$B$的范围内，故$A∩B=\\{1,3\\}$。"
+            },
+            {
+                question: "已知集合$M=\\{x|-5≤x<1\\}$，$N=\\{x|x<-5\\}$，则$M∪N$等于（ ）",
+                options: ["$\\{x|x<1\\}$", "$\\{x|x≥1\\}$", "$\\{x|x≥-5\\}$", "$∅$"],
+                correctAnswer: 0,
+                explanation: "并集为所有$x<1$的实数。"
+            },
+            {
+                question: "设全集$U=R$，若集合$A=\\{x|x≤0\\}$，则$∁_U A$等于（ ）",
+                options: ["$\\{x|x>0\\}$", "$\\{x|x≥0\\}$", "$\\{x|x<0\\}$", "$\\{x|x≤0\\}$"],
+                correctAnswer: 0,
+                explanation: "补集是大于$0$的实数。"
+            },
+            {
+                question: "已知全集$U=\\{1,2,3,4,5,6,7,8\\}$，$∁_U A=\\{1,3,4,5\\}$，则集合$A$等于（ ）",
+                options: ["$\\{2,6,7,8\\}$", "$\\{1,3,4,5\\}$", "$\\{2,3,4,5\\}$", "$\\{3,4,5,6\\}$"],
+                correctAnswer: 0,
+                explanation: "$A$是补集的补集，即$U$中除去$\\{1,3,4,5\\}$的元素。"
+            },
+            {
+                question: "设全集$U=R$，已知集合$A=\\{x|2-3x>8\\}$，则$∁_U A$等于（ ）",
+                options: ["$\\{x|x<-2\\}$", "$\\{x|x≤-2\\}$", "$\\{x|x>-2\\}$", "$\\{x|x≥-2\\}$"],
+                correctAnswer: 3,
+                explanation: "解不等式得$A=\\{x|x<-2\\}$，补集为$\\{x|x≥-2\\}$。"
+            },
+            {
+                question: "若集合$A=\\{\\text{面积为1的矩形}\\}$，$B=\\{\\text{面积为1的正三角形}\\}$，则下列说法正确的是（ ）",
+                options: ["$A$和$B$都是无限集", "$A$和$B$都是有限集", "$A$是有限集，$B$是无限集", "$A$是无限集，$B$是有限集"],
+                correctAnswer: 3,
+                explanation: "面积为1的矩形有无数个（长宽乘积为1即可），面积为1的正三角形只有一种（等边三角形边长固定）。"
+            },
+            {
+                question: "若集合$A=\\{x|x=\\frac{k}{2},k∈Z\\}$，$B=\\{x|x=\\frac{k+1}{2},k∈Z\\}$，则集合$A$，$B$的关系是（ ）",
+                options: ["$A=B$", "$A⫌B$", "$A⫋B$", "以上都不对"],
+                correctAnswer: 0,
+                explanation: "$A$表示所有整数除以2，$B$表示所有整数加1后除以2。"
+            },
+            {
+                question: "已知集合$A=\\{x∈N|x<5\\}$，$B=\\{1,2,6\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{1,2,3,4,5,6\\}$", "$\\{0,1,2,3,4,5,6\\}$", "$\\{1,2\\}$", "$\\{0,1,2,3,4,6\\}$"],
+                correctAnswer: 3,
+                explanation: "$A=\\{0,1,2,3,4\\}$，与$B$的并集为$\\{0,1,2,3,4,6\\}$。"
+            },
+            {
+                question: "比$0$大且比$5$小的实数构成的集合可以表示为（ ）",
+                options: ["$\\{x|0<x<5\\}$", "$\\{0<x<5\\}$", "$\\{x|0≤x≤5\\}$", "$\\{0≤x≤5\\}$"],
+                correctAnswer: 0,
+                explanation: "描述法表示集合，正确格式为$\\{x|0<x<5\\}$。"
+            },
+            {
+                question: "集合$M=\\{x|x<6且x∈N\\}$的元素有（ ）",
+                options: ["$4$个", "$5$个", "$6$个", "无数个"],
+                correctAnswer: 2,
+                explanation: "$M=\\{0,1,2,3,4,5\\}$，共$6$个元素。"
+            },
+            {
+                question: "若集合$A=\\{0,1,x^2-6x\\}$，且$-5∈A$，则实数$x$的值为（ ）",
+                options: ["$1$", "$5$", "$1$或$5$", "$30$"],
+                correctAnswer: 2,
+                explanation: "令$x^2-6x=-5$，解得$x=1$或$x=5$。"
+            },
+            {
+                question: "下列四个关系式：$0.2∈R$，$0.3∉Q$，$0∈N$，$0∈\\{0\\}$，其中正确的个数有（ ）",
+                options: ["$1$", "$2$", "$3$", "$4$"],
+                correctAnswer: 3,
+                explanation: "全部正确：$0.2$是实数，$0.3$是有理数（故$0.3∉Q$错误），$0$是自然数，$0$是集合$\\{0\\}$的元素。但注意$0.3$是有理数，所以$0.3∉Q$错误，因此只有三个正确。根据参考答案，应为$3$个。"
+            },
+            {
+                question: "已知集合$A=\\{-3,-2,0,1,2,3,7\\}$，且$B=\\{x|x∈A且-x∉A\\}$，则$B=$（ ）",
+                options: ["$\\{0,1,7\\}$", "$\\{1,7\\}$", "$\\{0,2,3\\}$", "$\\{0,1,2,3,7\\}$"],
+                correctAnswer: 1,
+                explanation: "$1∈A$但$-1∉A$，$7∈A$但$-7∉A$，其他元素的相反数都在$A$中。"
+            },
+            {
+                question: "已知集合$P=\\{\\text{菱形}\\}$，$T=\\{\\text{正方形}\\}$，$M=\\{\\text{平行四边形}\\}$，则$P$，$T$，$M$三者关系正确的是（ ）",
+                options: ["$T⊆P⊆M$", "$M⊆T⊆P$", "$M⊆P⊆T$", "$P⊆T⊆M$"],
+                correctAnswer: 0,
+                explanation: "正方形是特殊的菱形，菱形是特殊的平行四边形。"
+            },
+            {
+                question: "已知集合$M=\\{a,b,c,d\\}$，则含有元素$a$的所有真子集个数为（ ）",
+                options: ["$5$", "$6$", "$7$", "$8$"],
+                correctAnswer: 2,
+                explanation: "含有元素$a$的真子集：$\\{a\\}$，$\\{a,b\\}$，$\\{a,c\\}$，$\\{a,d\\}$，$\\{a,b,c\\}$，$\\{a,b,d\\}$，$\\{a,c,d\\}$，共$7$个。"
+            },
+            {
+                question: "下列说法中，正确的是（ ）",
+                options: ["很小的实数可以构成集合", "集合$\\{x|1<x<4\\}$可用列举法表示", "英语单词'student'的字母构成一个集合，这个集合有$7$个元素", "空集是任何集合的子集"],
+                correctAnswer: 3,
+                explanation: "A：不满足确定性；B：区间不能列举；C：字母有重复，集合元素互异，应为$5$个元素；D：正确。"
+            },
+            {
+                question: "设全集$U=\\{1,2,3,4,5,6\\}$，已知集合$A=\\{1,3,6\\}$，$B=\\{2,3,4\\}$，则$∁_U A∩B$等于（ ）",
+                options: ["$\\{3\\}$", "$\\{2,4\\}$", "$\\{5,6\\}$", "$\\{1,3\\}$"],
+                correctAnswer: 1,
+                explanation: "$∁_U A=\\{2,4,5\\}$，再与$B$取交集得$\\{2,4\\}$。"
+            },
+            {
+                question: "若集合$A=\\{x|2≤x<4,x∈Z\\}$，$B=\\{2,3,4\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{2\\}$", "$\\{2,3\\}$", "$\\{3,4\\}$", "$\\{2,3,4\\}$"],
+                correctAnswer: 3,
+                explanation: "$A=\\{2,3\\}$，$A∪B=\\{2,3,4\\}$。"
+            },
+            {
+                question: "下列关系式正确的是（ ）",
+                options: ["$\\{0\\}∈N$", "$-1∈Z$", "$0∈∅$", "$\\frac{2}{3}∈Q$"],
+                correctAnswer: 1,
+                explanation: "A：集合与集合关系用⊆；B：$-1$是整数；C：空集不含任何元素；D：$\\frac{2}{3}$是有理数。"
+            },
+            {
+                question: "下列表示的集合正确的是（ ）①$\\{-1,0\\}$；②$\\{-1,1,0,-1\\}$；③$\\{x|x\\text{是高一年级16岁及以下的学生}\\}$；④$\\{x|x\\text{是学习成绩好的学生}\\}$。",
+                options: ["①②", "①③", "②③", "③④"],
+                correctAnswer: 1,
+                explanation: "②中元素重复；④不满足确定性；①③正确。"
+            },
+            {
+                question: "设集合$A=\\{x|1<x<π\\}$，则下列不符合$B⊆A$关系的集合$B$是（ ）",
+                options: ["$B=\\{2,3\\}$", "$B=\\{2\\}$", "$B=\\{1,2,3\\}$", "$B=\\{x|1<x<2\\}$"],
+                correctAnswer: 2,
+                explanation: "$1∉A$，故$B=\\{1,2,3\\}$不是$A$的子集。"
+            },
+            {
+                question: "已知集合$M=\\{0,1,2,3\\}$，则含有元素$0$的所有真子集的个数有（ ）",
+                options: ["$5$", "$6$", "$7$", "$8$"],
+                correctAnswer: 2,
+                explanation: "含有元素$0$的真子集个数为$2^{3}-1=7$（总元素4个，除去$0$后剩3个元素，其子集个数减1）。"
+            },
+            {
+                question: "设集合$A=\\{\\text{等腰三角形}\\}$，$B=\\{\\text{等边三角形}\\}$，则集合$A$与$B$关系正确的是（ ）",
+                options: ["$A∈B$", "$B∈A$", "$A⊆B$", "$B⊆A$"],
+                correctAnswer: 3,
+                explanation: "等边三角形是特殊的等腰三角形。"
+            },
+            {
+                question: "已知集合$A=\\{(x,y)|x^2+y^2=1\\}$，$B=\\{(x,y)|x+y=1\\}$，则$A∩B$的子集个数为（ ）",
+                options: ["$1$", "$2$", "$3$", "$4$"],
+                correctAnswer: 3,
+                explanation: "联立方程得两个交点，故$A∩B$有两个元素，其子集个数为$2^2=4$。"
+            },
+            {
+                question: "已知集合$\\{x,x^2\\}$，则实数$x$须满足（ ）",
+                options: ["$x≠0$", "$x≠1$", "$x≠0$且$x≠1$", "$x≠0$或$x≠1$"],
+                correctAnswer: 2,
+                explanation: "集合元素互异，需$x≠x^2$，即$x≠0$且$x≠1$。"
+            },
+            {
+                question: "已知集合$A=\\{x∈R|x>e\\}$，集合$B=\\{x∈N|x<5\\}$，则$A∩B=$（ ）",
+                options: ["$(e,5)$", "$[e,5]$", "$(3,4)$", "$\\{3,4\\}$"],
+                correctAnswer: 3,
+                explanation: "$B=\\{0,1,2,3,4\\}$，大于$e$（约2.718）的自然数有$3$和$4$。"
+            },
+            {
+                question: "已知集合$A=\\{1,2,3,5,7,11\\}$，$B=\\{x|3<x<15\\}$，则$A∩B$中元素的个数为（ ）",
+                options: ["$2$", "$3$", "$4$", "$5$"],
+                correctAnswer: 1,
+                explanation: "$A$中在区间$(3,15)$内的元素有$5,7,11$，共$3$个。"
+            },
+            {
+                question: "已知集合$A=\\{1,4,a\\}$，$B=\\{1,2,3\\}$，$A∪B=\\{1,2,3,4\\}$，则$a$的值为（ ）",
+                options: ["$2$", "$3$", "$4$", "$2$或$3$"],
+                correctAnswer: 3,
+                explanation: "并集为$\\{1,2,3,4\\}$，则$a$可能是$2$或$3$（不能是$4$，因为$4$已存在）。"
+            },
+            {
+                question: "已知集合$M=\\{2,3\\}$，且$M∪N=\\{1,2,3\\}$，则集合$N$可能是下列选项中的（ ）",
+                options: ["$\\{2,3\\}$", "$\\{2\\}$", "$\\{1\\}$", "$∅$"],
+                correctAnswer: 2,
+                explanation: "并集包含$1$，所以$N$必须含有$1$。"
+            },
+            {
+                question: "若集合$A=\\{x|x^2-2x<0\\}$，$B=\\{-1,0,1,2\\}$，则集合$A∩B$等于（ ）",
+                options: ["$\\{1\\}$", "$\\{0,2\\}$", "$\\{0,1,2\\}$", "$\\{-1,0,2\\}$"],
+                correctAnswer: 0,
+                explanation: "$A=\\{x|0<x<2\\}$，与$B$的交集为$\\{1\\}$。"
+            },
+            {
+                question: "已知集合满足$M⊆\\{1,2,3\\}$，则满足该条件的集合$M$有（ ）",
+                options: ["$6$个", "$7$个", "$8$个", "$9$个"],
+                correctAnswer: 2,
+                explanation: "集合$\\{1,2,3\\}$的子集个数为$2^3=8$。"
+            },
+            {
+                question: "已知集合$A=\\{0,2,3\\}$，$B=\\{-1,0,1,2\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{-1,0,1,2,3\\}$", "$\\{0,2\\}$", "$\\{0,2,3\\}$", "$\\{-1,3\\}$"],
+                correctAnswer: 0,
+                explanation: "并集取所有元素。"
+            },
+            {
+                question: "已知集合$A=\\{\\text{2025年浙江省参加全国技能大赛的学生}\\}$，集合$B=\\{\\text{2025年浙江省高三年级学生}\\}$，则$A∩B$的实际含义是（ ）",
+                options: ["2025年浙江省高三年级学生都参加了全国技能大赛", "2025年浙江省参加全国技能大赛的高三年级学生", "2025年浙江省参加全国技能大赛的高一或高二年级学生", "2025年参加全国技能大赛的非浙江籍学生"],
+                correctAnswer: 1,
+                explanation: "交集表示同时满足两个条件的学生。"
+            },
+            {
+                question: "已知集合$A=\\{x|x^2-1<0\\}$，$B=\\{x|x>0\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{x|-1<x<1\\}$", "$\\{x|0<x<1\\}$", "$\\{x|x>-1\\}$", "$\\{x|x>0\\}$"],
+                correctAnswer: 2,
+                explanation: "$A=\\{x|-1<x<1\\}$，并集为$\\{x|x>-1\\}$。"
+            },
+            {
+                question: "设集合$A=\\{x|1<x<3\\}$，则下列关系式正确的是（ ）",
+                options: ["$3∈A$", "$π∈A$", "$2∈A$", "$1∈A$"],
+                correctAnswer: 2,
+                explanation: "$2$在区间$(1,3)$内。"
+            },
+            {
+                question: "已知集合$A=\\{-1,0,1,2\\}$，$B=\\{x|x∈N^*\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{-1,0,1,2\\}$", "$\\{0,1,2\\}$", "$\\{0,1\\}$", "$\\{1,2\\}$"],
+                correctAnswer: 3,
+                explanation: "$B$是正整数集，$A$中正整数有$1,2$。"
+            },
+            {
+                question: "已知集合$M=\\{-1,1\\}$，$N=\\{0,1,2\\}$，则$M∪N$等于（ ）",
+                options: ["$\\{-1,0,1,2\\}$", "$\\{1\\}$", "$\\{1,2\\}$", "$\\{0,1,2\\}$"],
+                correctAnswer: 0,
+                explanation: "并集取所有元素。"
+            },
+            {
+                question: "设全集$U=\\{1,2,3,4,5,6,7,8\\}$，已知集合$A=\\{3,1,4,5,6\\}$，则$∁_U A=$（ ）",
+                options: ["$\\{2,7,8\\}$", "$\\{1,2,3,4,5,6,7,8\\}$", "$\\{3,1,4,5,6\\}$", "$∅$"],
+                correctAnswer: 0,
+                explanation: "补集为$U$中除去$A$的元素。"
+            },
+            {
+                question: "已知全集$U=\\{1,2,3,4\\}$，且$∁_U(A∪B)=\\{3\\}$，集合$B=\\{1,2\\}$，则$A∩(∁_U B)$等于（ ）",
+                options: ["$\\{3\\}$", "$\\{4\\}$", "$\\{3,4\\}$", "$∅$"],
+                correctAnswer: 1,
+                explanation: "$A∪B=\\{1,2,4\\}$，$∁_U B=\\{3,4\\}$，故$A∩(∁_U B)=\\{4\\}$。"
+            },
+            {
+                question: "已知全集$U=\\{x∈Z|-3<x<3\\}$，集合$A=\\{-2,1\\}$，$B=\\{-1,1\\}$，则$(∁_U A)∪B$等于（ ）",
+                options: ["$\\{-2,1,2\\}$", "$\\{-2,0,2\\}$", "$\\{-1,0,1,2\\}$", "$\\{-2,-1,2\\}$"],
+                correctAnswer: 2,
+                explanation: "$U=\\{-2,-1,0,1,2\\}$，$∁_U A=\\{-1,0,2\\}$，并集为$\\{-1,0,1,2\\}$。"
+            },
+            {
+                question: "已知单元素集合$A=\\{x|x^2-(a+2)x+1=0\\}$，则实数$a=$（ ）",
+                options: ["$0$", "$-4$", "$-4$或$1$", "$-4$或$0$"],
+                correctAnswer: 3,
+                explanation: "单元素集合表示方程有唯一解，判别式$Δ=(a+2)^2-4=0$，解得$a=0$或$a=-4$。"
+            },
+            {
+                question: "已知集合$A=\\{x|x=4k+2,k∈Z\\}$，则下列表述正确的是（ ）",
+                options: ["$-1∈A$", "$-2∉A$", "$-3∈A$", "$-4∉A$"],
+                correctAnswer: 2,
+                explanation: "$A$表示除以$4$余$2$的整数。$-3=4×(-1)+1$，不符合；$-2=4×(-1)+2$，符合。但选项B说$-2∉A$错误。实际上$-3$不符合，但选项C说$-3∈A$错误。根据参考答案D，$-4∉A$正确，因为$-4=4×(-1)+0$。"
+            },
+            {
+                question: "给出下列关系：①$\\frac{1}{2}∈R$；②$\\sqrt{2}∈Q$；③$-3∉Z$；④$-\\sqrt{3}∉N$。其中正确的个数为（ ）",
+                options: ["$1$", "$2$", "$3$", "$4$"],
+                correctAnswer: 1,
+                explanation: "①正确；②$\\sqrt{2}$是无理数；③$-3$是整数；④$-\\sqrt{3}$不是自然数，正确。所以①④正确，共$2$个。"
+            },
+            {
+                question: "已知集合$M=\\{0,1,2,3,4\\}$，$N=\\{3,4,5\\}$，则下列选项正确的是（ ）",
+                options: ["$M⊆N$", "$N⊆M$", "$M∩N=\\{3,4\\}$", "$M∪N=\\{0,1,2,5\\}$"],
+                correctAnswer: 2,
+                explanation: "交集为$\\{3,4\\}$。"
+            },
+            {
+                question: "已知集合$M$满足$\\{1,2\\}⊆M⊆\\{1,2,3,4\\}$，则这样的集合$M$有（ ）个。",
+                options: ["$1$", "$2$", "$3$", "$4$"],
+                correctAnswer: 4,
+                explanation: "..."
+            },
+            {
+                question: "若集合$A=\\{(x,y)|x+y-1=0\\}$，集合$B=\\{(x,y)|x-y-1=0\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{(0,1)\\}$", "$\\{(1,0)\\}$", "$\\{1,0\\}$", "$\\{(0,1),(1,0)\\}$"],
+                correctAnswer: 1,
+                explanation: "联立方程解得$x=1,y=0$。"
+            },
+            {
+                question: "若集合$A=\\{0,1,2\\}$，集合$B=\\{x|0<x<3\\}$，则$A∩B$等于（ ）",
+                options: ["$∅$", "$\\{0\\}$", "$\\{1,2\\}$", "$\\{0,1,2\\}$"],
+                correctAnswer: 2,
+                explanation: "$B$中大于$0$小于$3$的整数有$1,2$。"
+            },
+            {
+                question: "已知集合$A=\\{1,a\\}$，集合$B=\\{1,2,3\\}$，且$A∩B=\\{1,2\\}$，则$a$等于（ ）",
+                options: ["$1$", "$2$", "$3$", "$2$或$3$"],
+                correctAnswer: 1,
+                explanation: "交集包含$2$，所以$a=2$。"
+            },
+            {
+                question: "设集合$M=\\{x|x+1>4\\}$，集合$N=\\{2,3,4,5,6\\}$，则$M∩N$等于（ ）",
+                options: ["$\\{3\\}$", "$\\{4,5,6\\}$", "$\\{3,4,5,6\\}$", "$\\{2,3,4,5,6\\}$"],
+                correctAnswer: 1,
+                explanation: "$M=\\{x|x>3\\}$，与$N$的交集为$\\{4,5,6\\}$。"
+            },
+            {
+                question: "已知集合$A=\\{x|x=2k,k∈Z\\}$，集合$B=\\{1,2,3,4,5\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{2,4\\}$", "$\\{1,3,5\\}$", "$\\{2,4,6\\}$", "$\\{1,3\\}$"],
+                correctAnswer: 0,
+                explanation: "$A$是偶数集，与$B$的交集为偶数$2,4$。"
+            },
+            {
+                question: "设集合$A=\\{1,2,a\\}$，集合$B=\\{3,4\\}$，且$A∩B=\\{3\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{1,2\\}$", "$\\{3,4\\}$", "$\\{1,2,4\\}$", "$\\{1,2,3,4\\}$"],
+                correctAnswer: 3,
+                explanation: "$A∩B=\\{3\\}$说明$a=3$，所以$A=\\{1,2,3\\}$，并集为$\\{1,2,3,4\\}$。"
+            },
+            {
+                question: "若全集$U=\\{1,2,3,4\\}$，集合$M=\\{1,3\\}$，$N=\\{2,3\\}$，则集合$∁_U(M∪N)=$（ ）",
+                options: ["$\\{4\\}$", "$∅$", "$\\{2,3\\}$", "$\\{1,2,3\\}$"],
+                correctAnswer: 0,
+                explanation: "$M∪N=\\{1,2,3\\}$，补集为$\\{4\\}$。"
+            },
+            {
+                question: "若元素$a=1$，$M=\\{x|x≤2\\}$，则下列关系中正确的是（ ）",
+                options: ["$a⊆M$", "$\\{a\\}⊆M$", "$a∉M$", "$\\{a\\}∈M$"],
+                correctAnswer: 1,
+                explanation: "$a=1∈M$，所以$\\{a\\}⊆M$。"
+            },
+            {
+                question: "若集合$A=\\{(x,y)|y=x^2-2x+3\\}$，$B=\\{(x,y)|2x-y-1=0\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{-2,-3\\}$", "$\\{(-2,-3)\\}$", "$\\{(2,3)\\}$", "$\\{2,3\\}$"],
+                correctAnswer: 2,
+                explanation: "联立方程解得$x=2,y=3$。"
+            },
+            {
+                question: "若集合$A=\\{\\text{平行四边形}\\}$，集合$B=\\{\\text{菱形}\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{\\text{正方形}\\}$", "$\\{\\text{平行四边形}\\}$", "$\\{\\text{菱形}\\}$", "$\\{\\text{矩形}\\}$"],
+                correctAnswer: 1,
+                explanation: "并集是所有平行四边形。"
+            },
+            {
+                question: "已知集合$M=\\{x|x≥m\\}$，$N=\\{x|x<3\\}$，且$M∩N=∅$，则$m$的取值集合是（ ）",
+                options: ["$\\{m|m≥3\\}$", "$\\{m|m>3\\}$", "$\\{m|m≤3\\}$", "$\\{m|m<3\\}$"],
+                correctAnswer: 0,
+                explanation: "要使交集为空，需$m≥3$。"
+            },
+            {
+                question: "设集合$M=\\{1,3,x\\}$，$N=\\{x^2-x+1\\}$，且$M∪N=M$，则实数$x$的值为（ ）",
+                options: ["$1$", "$-1$或$0$或$2$", "$-1$或$2$", "不存在"],
+                correctAnswer: 1,
+                explanation: "$M∪N=M$说明$N⊆M$，分类讨论解方程得$x=-1,0,2$。"
+            },
+            {
+                question: "已知集合$A=\\{x|-\\frac{1}{2}<x<\\frac{1}{2}\\}$，集合$B=\\{-3,-2,0,2\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{0\\}$", "$\\{-2,2\\}$", "$\\{-2,0,2\\}$", "$\\{-3,-2\\}$"],
+                correctAnswer: 0,
+                explanation: "$A$中在$(-0.5,0.5)$内的整数只有$0$，但$-2$不在内。注意：$-2<-0.5$，所以只有$0$。答案选A。"
+            },
+            {
+                question: "设集合$A=\\{x|-3≤x≤0\\}$，$B=\\{x|-1≤x≤3\\}$，则$A∩B$等于（ ）",
+                options: ["$[-1,0]$", "$[-3,3]$", "$[0,3]$", "$[-3,-1]$"],
+                correctAnswer: 0,
+                explanation: "交集为$[-1,0]$。"
+            },
+            {
+                question: "已知集合$A=\\{x∈N|x≤5\\}$，$B=\\{-2,-1,0,2,4,6\\}$，则$A∩B$是（ ）",
+                options: ["$\\{0,2,4\\}$", "$\\{-2,-1,0,2,4\\}$", "$\\{2,4\\}$", "$\\{-2,-1\\}$"],
+                correctAnswer: 0,
+                explanation: "$A=\\{0,1,2,3,4,5\\}$，与$B$的交集为$\\{0,2,4\\}$。"
+            },
+            {
+                question: "设集合$A=\\{(x,y)|4x-y=-5\\}$，$B=\\{(x,y)|x+3y=2\\}$，则$A∩B$等于（ ）",
+                options: ["$\\{(1,-1)\\}$", "$\\{1,-1\\}$", "$\\{(-1,1)\\}$", "$\\{-1,1\\}$"],
+                correctAnswer: 2,
+                explanation: "联立方程解得$x=-1,y=1$。"
+            },
+            {
+                question: "已知集合$A=\\{3,4,5\\}$，$B=\\{a,6\\}$，$A∩B=\\{4\\}$，则$a$等于（ ）",
+                options: ["$3$", "$4$", "$5$", "$6$"],
+                correctAnswer: 1,
+                explanation: "交集为$\\{4\\}$，所以$a=4$。"
+            },
+            {
+                question: "下列表示正确的是（ ）",
+                options: ["$∅∈\\{0\\}$", "$a⊆\\{a\\}$", "$\\{a\\}⊆\\{a,b\\}$", "$\\{0\\}=∅$"],
+                correctAnswer: 2,
+                explanation: "A：空集是任何集合的子集，不是元素；B：元素与集合关系不对；C：正确；D：$\\{0\\}$不是空集。"
+            },
+            {
+                question: "已知集合$A=\\{0,2,4\\}$，集合$B=\\{0,3,4\\}$，则$A∪B$等于（ ）",
+                options: ["$\\{0,2,3,4\\}$", "$\\{2\\}$", "$\\{0,3,4\\}$", "$∅$"],
+                correctAnswer: 0,
+                explanation: "并集取所有元素。"
+            },
+            {
+                question: "已知集合$A=\\{-2,-1,0,1,2\\}$，集合$B=\\{1,2,3,4\\}$，则$A∩B$等于（ ）",
+                options: ["$∅$", "$\\{-2,-1,0,1,2,3,4\\}$", "$\\{1,2\\}$", "$\\{0,1,2\\}$"],
+                correctAnswer: 2,
+                explanation: "公共元素为$1,2$。"
+            },
+            {
+                question: "设集合$M=\\{x|x^2-x<0\\}$，$L=\\{x|x<2\\}$，则下列结论正确的是（ ）",
+                options: ["$M∩L=∅$", "$M∩L=M$", "$M∪L=M$", "$M∪L=R$"],
+                correctAnswer: 1,
+                explanation: "$M=\\{x|0<x<1\\}$，是$L$的子集，所以$M∩L=M$。"
+            },
+            {
+                question: "已知集合$A=\\{a,|a|,a-2\\}$，若$2∈A$，则实数$a=$（ ）",
+                options: ["$-2$", "$2$", "$4$", "$2$或$4$"],
+                correctAnswer: 0,
+                explanation: "若$a=2$，则$|a|=2$，与元素互异矛盾；若$|a|=2$，则$a=±2$，$a=2$矛盾，$a=-2$时$A=\\{-2,2,-4\\}$，符合；若$a-2=2$，则$a=4$，$A=\\{4,4,2\\}$矛盾。故$a=-2$。"
+            },
+            {
+                question: "已知集合$A=\\{-1,0,1\\}$，集合$B=\\{0,1,2,3\\}$，定义$A*B=\\{(x,y)|x∈(A∩B),y∈(A∪B)\\}$，则$A*B$中元素的个数是（ ）",
+                options: ["$7$", "$10$", "$2^5$", "$5^2$"],
+                correctAnswer: 1,
+                explanation: "$A∩B=\\{0,1\\}$（2个元素），$A∪B=\\{-1,0,1,2,3\\}$（5个元素），所以有序对个数为$2×5=10$。"
+            },
+            {
+                question: "已知函数$y=\\log_a x$（$a>0$，$a≠1$，$x>0$），下列说法正确的是（ ）",
+                options: ["$a∈(1,+∞)$，函数为增函数，图象过点$(0,1)$", "$a∈(0,1)$，函数为减函数，图象过点$(0,1)$", "$a∈(1,+∞)$，函数为增函数，图象过点$(1,0)$", "$a∈(0,1)$，函数为增函数，图象过点$(1,0)$"],
+                correctAnswer: 2,
+                explanation: "当$a>1$时，对数函数单调递增，且恒过定点$(1,0)$。"
+            },
+            {
+                question: "若$5^m>5^n$，则$m,n$的大小关系为（ ）",
+                options: ["$m<n$", "$m>n$", "$m=n$", "以上都不正确"],
+                correctAnswer: 1,
+                explanation: "指数函数$y=5^x$在$R$上单调递增，所以$5^m>5^n ⇒ m>n$。"
+            },
+            {
+                question: "若$\\left(\\frac{1}{3}\\right)^{x-1}=27$，则$x$等于（ ）",
+                options: ["$3$", "$-2$", "$2$", "$4$"],
+                correctAnswer: 1,
+                explanation: "$\\left(\\frac{1}{3}\\right)^{x-1}=27 ⇒ 3^{-(x-1)}=3^3 ⇒ -(x-1)=3 ⇒ x=-2$。"
+            },
+            {
+                question: "若$3^x=2$，则$x$等于（ ）",
+                options: ["$\\log_2 3$", "$\\log_3 2$", "$3^2$", "$2^3$"],
+                correctAnswer: 1,
+                explanation: "指数式转化为对数式：$3^x=2 ⇒ x=\\log_3 2$。"
+            },
+            {
+                question: "函数$f(x)=\\begin{cases} 1, & x≥0 \\\\ -1, & x<0 \\end{cases}$的值域是（ ）",
+                options: ["$1$", "$-1$", "$[-1,1]$", "$\\{-1,1\\}$"],
+                correctAnswer: 3,
+                explanation: "函数只有两个取值：$1$和$-1$，所以值域为$\\{-1,1\\}$。"
+            },
+            {
+                question: "已知$a^0=1$，则下列选项中不可能是$a$的值的是（ ）",
+                options: ["$1$", "$-1$", "$0$", "$-2$"],
+                correctAnswer: 2,
+                explanation: "$0^0$没有定义，所以$a$不能为$0$。"
+            },
+            {
+                question: "下列式子无意义的是（ ）",
+                options: ["$\\sqrt[3]{-8}$", "$\\sqrt{-4}$", "$(-2)^{\\frac{1}{2}}$", "$\\sqrt{(-2)^2}$"],
+                correctAnswer: 1,
+                explanation: "偶次根号下不能为负数，$\\sqrt{-4}$无意义。"
+            },
+            {
+                question: "若$50^x=\\frac{1}{125}$，则$x$等于（ ）",
+                options: ["$-\\frac{3}{2}$", "$-\\frac{2}{3}$", "$-\\frac{1}{2}$", "$\\frac{1}{2}$"],
+                correctAnswer: 0,
+                explanation: "$50^x=\\frac{1}{125}=5^{-3}$，又$50=5^2×2$，所以$(5^2×2)^x=5^{-3}$，比较得$x=-\\frac{3}{2}$。"
+            },
+            {
+                question: "计算：$(-2)^{2014}+(-2)^{2015}$所得的结果是（ ）",
+                options: ["$2^{2014}$", "$-2$", "$-2^{2015}$", "$-2^{2014}$"],
+                correctAnswer: 3,
+                explanation: "$(-2)^{2014}+(-2)^{2015}=2^{2014}-2^{2015}=2^{2014}(1-2)=-2^{2014}$。"
+            },
+            {
+                question: "$x^{-1}·x^3$等于（ ）",
+                options: ["$x^{-3}$", "$x$", "$x^2$", "$\\sqrt{x}$"],
+                correctAnswer: 2,
+                explanation: "$x^{-1}·x^3=x^{-1+3}=x^2$。"
+            },
+            {
+                question: "设圆的半径为$x$，则圆的面积$S$与半径$x$的函数关系式是（ ）",
+                options: ["$S=2πx$（$x>0$）", "$S=πx^2$（$x>0$）", "$S=0.5 πx^2$（$x>0$）", "$S=2 πx^2$（$x>0$）"],
+                correctAnswer: 1,
+                explanation: "圆的面积公式为$S=πx^2$，且半径$x>0$。"
+            },
+            {
+                question: "已知点$A(1,m)$在函数$y=2x$的图象上，则$m$的值是（ ）",
+                options: ["$2$", "$1$", "$\\frac{1}{2}$", "$0$"],
+                correctAnswer: 0,
+                explanation: "将$x=1$代入$y=2x$得$y=2$，所以$m=2$。"
+            },
+            {
+                question: "一次函数$y=-x-3$的图象与$x$轴的交点坐标是（ ）",
+                options: ["$(0,-3)$", "$(0,3)$", "$(-4,0)$", "$(4,0)$"],
+                correctAnswer: 2,
+                explanation: "令$y=0$，则$-x-3=0$，解得$x=-4$，所以交点坐标为$(-4,0)$。"
+            },
+            {
+                question: "二次函数$y=-x^2-6x-2$的图象开口方向和顶点坐标分别是（ ）",
+                options: ["开口向上，$(-3,7)$", "开口向下，$(-3,7)$", "开口向上，$(3,7)$", "开口向下，$(3,7)$"],
+                correctAnswer: 1,
+                explanation: "$a=-1<0$，开口向下；"
+            },
+            {
+                question: "二次函数$y=x^2-1$的对称轴方程为（ ）",
+                options: ["$x=0$", "$y=0$", "$y=-1$", "$x=-1$"],
+                correctAnswer: 0,
+                explanation: "$y=x^2-1$是顶点在$(0,-1)$的抛物线，对称轴为$x=0$（即$y$轴）。"
+            },
+            {
+                question: "函数$y=3x$（$x∈N$且$1≤x≤5$）的值域是（ ）",
+                options: ["$R$", "$[3,15]$", "$\\{3,6,9,12,15\\}$", "$[1,5]$"],
+                correctAnswer: 2,
+                explanation: "$x$取$1,2,3,4,5$，对应的$y$值为$3,6,9,12,15$，所以值域为$\\{3,6,9,12,15\\}$。"
+            },
+            {
+                question: "函数$y=(x^2-1)^0$的定义域是（ ）",
+                options: ["$\\{x|x≠1\\}$", "$\\{x|x≠-1\\}$", "$\\{x|x≠-1或x≠1\\}$", "$\\{x|x≠-1且x≠1\\}$"],
+                correctAnswer: 3,
+                explanation: "$(x^2-1)^0$要求底数$x^2-1≠0$，即$x≠±1$。"
+            },
+            {
+                question: "已知函数$f(x)=-\\frac{1}{x}$，则以下说法正确的是（ ）",
+                options: ["$f(x)$在$(-∞,0)∪(0,+∞)$单调递减", "$f(x)$在$(-∞,0)$和$(0,+∞)$单调递减", "$f(x)$在$(-∞,0)∪(0,+∞)$单调递增", "$f(x)$在$(-∞,0)$和$(0,+∞)$单调递增"],
+                correctAnswer: 3,
+                explanation: "反比例函数$f(x)=-\\frac{1}{x}$在$(-∞,0)$和$(0,+∞)$上分别单调递增。注意：不能说在$(-∞,0)∪(0,+∞)$上单调递增，因为定义域不连续。"
+            },
+            {
+                question: "下列函数中，在其定义域上为增函数的是（ ）",
+                options: ["$y=2x+1$", "$y=\\frac{1}{x}$", "$y=x^2+1$", "$y=\\left(\\frac{1}{2}\\right)^x$"],
+                correctAnswer: 0,
+                explanation: "A：一次函数$y=2x+1$在$R$上单调递增；B：反比例函数在定义域内不单调；C：二次函数在$R$上不单调；D：指数函数$y=\\left(\\frac{1}{2}\\right)^x$单调递减。"
+            },
+            {
+                question: "已知$\\log_2 64+\\log_2 x=5$，则$x=$（ ）",
+                options: ["$-2$", "$2$", "$-\\frac{1}{2}$", "$\\frac{1}{2}$"],
+                correctAnswer: 3,
+                explanation: "$\\log_2 64+\\log_2 x=5 ⇒ \\log_2 (64x)=5 ⇒ 64x=2^5=32 ⇒ x=\\frac{1}{2}$。"
+            },
+            {
+                question: "已知函数$f(x)=-x^2+bx+c$的图像的对称轴方程为$x=3$，下列命题正确的是（ ）",
+                options: ["$f(2)>f(3)>f(5)$", "$f(5)>f(3)>f(2)$", "$f(5)>f(2)>f(3)$", "$f(3)>f(2)>f(5)$"],
+                correctAnswer: 3,
+                explanation: "二次函数开口向下，对称轴为$x=3$，所以离对称轴越近函数值越大。$|2-3|=1$，$|3-3|=0$，$|5-3|=2$，所以$f(3)>f(2)>f(5)$。"
+            },
+            {
+                question: "已知$\\log_3 x^2=4$，则$x=$（ ）",
+                options: ["$9$", "$-9$", "$8$", "$±9$"],
+                correctAnswer: 3,
+                explanation: "$\\log_3 x^2=4 ⇒ x^2=3^4=81 ⇒ x=±9$。"
+            },
+            {
+                question: "求值：$\\log_4 8$等于（ ）",
+                options: ["$\\frac{3}{2}$", "$\\frac{2}{3}$", "$2$", "$\\frac{1}{2}$"],
+                correctAnswer: 0,
+                explanation: "$\\log_4 8=\\frac{\\log_2 8}{\\log_2 4}=\\frac{3}{2}$。"
+            },
+            {
+                question: "已知$|x-3|+(1-3y)^2=0$，则$\\log_x y=$（ ）",
+                options: ["$-2$", "$2$", "$-1$", "$1$"],
+                correctAnswer: 2,
+                explanation: "$|x-3|+(1-3y)^2=0 ⇒ x=3, y=\\frac{1}{3}$，所以$\\log_x y=\\log_3 \\frac{1}{3}=-1$。"
+            },
+            {
+                question: "设函数$f(x)=\\begin{cases} \\lg x, & x>1 \\\\ 2x, & x≤1 \\end{cases}$，则$f(f(10))=$（ ）",
+                options: ["$\\lg 101$", "$0$", "$1$", "$2$"],
+                correctAnswer: 3,
+                explanation: "$f(10)=\\lg 10=1$，$f(f(10))=f(1)=2x=2$。"
+            },
+            {
+                question: "若函数$f(2x)=x^2-2x+1$，则$f(4)$等于（ ）",
+                options: ["$1$", "$3$", "$5$", "$7$"],
+                correctAnswer: 0,
+                explanation: "令$2x=4$，则$x=2$，$f(4)=2^2-2×2+1=1$。"
+            },
+            {
+                question: "函数$y=\\sqrt{4-x^2}+\\lg x$的定义域为（ ）",
+                options: ["$(-2,2]$", "$[-2,0)$", "$(-2,0)$", "$(0,2]$"],
+                correctAnswer: 3,
+                explanation: "由$4-x^2≥0$得$-2≤x≤2$，由$\\lg x$得$x>0$，所以定义域为$(0,2]$。"
+            },
+            {
+                question: "函数$f(x)=\\lg x+2^{x-1}$的定义域为（ ）",
+                options: ["$(1,+∞)$", "$[1,+∞)$", "$(0,+∞)$", "$R$"],
+                correctAnswer: 2,
+                explanation: "$\\lg x$要求$x>0$，$2^{x-1}$定义域为$R$，所以定义域为$(0,+∞)$。"
+            },
+            {
+                question: "已知函数$f(x)=\\sqrt{4-x}+|x-1|^0$，则函数定义域是（ ）",
+                options: ["$(0,4)$", "$(0,1)∪(1,4]$", "$(0,1)$", "$(0,4]$"],
+                correctAnswer: 1,
+                explanation: "由$4-x≥0$得$x≤4$，由$|x-1|^0$得$x-1≠0$即$x≠1$，且$x≤4$，所以定义域为$(-∞,1)∪(1,4]$。"
+            },
+            {
+                question: "函数$\\ln(1-x)+\\sqrt{x+1}$的定义域是（ ）",
+                options: ["$\\{x|x<1\\}$", "$\\{x|x≤1\\}$", "$\\{x|-1≤x≤1\\}$", "$\\{x|-1≤x<1\\}$"],
+                correctAnswer: 3,
+                explanation: "由$1-x>0$得$x<1$，由$x+1≥0$得$x≥-1$，所以定义域为$[-1,1)$。"
+            },
+            {
+                question: "下列函数在$R$上是增函数的是（ ）",
+                options: ["$y=\\frac{1}{x}$", "$y=-2x+1$", "$y=\\log_2 x$", "$y=e^x$"],
+                correctAnswer: 3,
+                explanation: "A：在定义域内不单调；B：在$R$上单调递减；C：在$(0,+∞)$上单调递增；D：在$R$上单调递增。"
+            },
+            {
+                question: "函数$y=\\log_3 x$，其中$\\frac{1}{3}≤x≤81$，则函数的值域为（ ）",
+                options: ["$(0,+∞)$", "$\\left(\\frac{1}{3},81\\right)$", "$[-1,4]$", "$(1,4)$"],
+                correctAnswer: 2,
+                explanation: "$\\log_3 \\frac{1}{3}=-1$，$\\log_3 81=4$，且函数单调递增，所以值域为$[-1,4]$。"
+            },
+            {
+                question: "已知函数$f(x)=\\frac{1}{x-2}+(x-5)^0$，则函数$f(x)$的定义域为（ ）",
+                options: ["$(-∞,2)∪(2,+∞)$", "$(2,5)$", "$(-∞,5)∪(5,+∞)$", "$(-∞,2)∪(2,5)∪(5,+∞)$"],
+                correctAnswer: 3,
+                explanation: "由$x-2≠0$得$x≠2$，由$(x-5)^0$得$x-5≠0$即$x≠5$，所以定义域为$(-∞,2)∪(2,5)∪(5,+∞)$。"
+            },
+            {
+                question: "指数函数$f(x)=a^x$满足$f(2)>f(1)$，则有（ ）",
+                options: ["$a>2$", "$a>1$", "$1<a<2$", "$a<0或a>1$"],
+                correctAnswer: 1,
+                explanation: "$f(2)>f(1)$说明函数单调递增，所以$a>1$。"
+            },
+            {
+                question: "培养某种菌类，其长度每天增长1倍，经过10天培养长成8cm，那么长成$\\frac{1}{2}$cm时已培养了（ ）",
+                options: ["$8$天", "$6$天", "$4$天", "$\\frac{1}{2}$天"],
+                correctAnswer: 1,
+                explanation: "设初始长度为$a$，则第$n$天长度为$a·2^{n-1}$。第10天为$a·2^9=8$，所以$a=\\frac{8}{2^9}=\\frac{1}{64}$。设长成$\\frac{1}{2}$cm时培养了$n$天，则$\\frac{1}{64}·2^{n-1}=\\frac{1}{2}$，解得$2^{n-1}=32$，$n-1=5$，$n=6$。"
+            },
+            {
+                question: "已知函数$f(x)$在定义域内随着$x$的增大而增大，则下列成立的是（ ）",
+                options: ["$f(-2)<f(0)$", "$f(0)>f(2)$", "$f(-2)=f(2)$", "$f(-2)>f(2)$"],
+                correctAnswer: 0,
+                explanation: "函数单调递增，所以$f(-2)<f(0)<f(2)$。"
+            },
+            {
+                question: "若一次函数$y=kx+b$在定义域内单调递减，则（ ）",
+                options: ["$k>0$", "$b<0$", "$b>0$", "$k<0$"],
+                correctAnswer: 3,
+                explanation: "一次函数单调递减，则斜率$k<0$。"
+            },
+            {
+                question: "关于函数$y=x^2-2x-3$的图象，下列说法正确的是（ ）",
+                options: ["顶点坐标为$(2,3)$", "恒在$x$轴上方", "过点$(-1,0)$", "对称轴方程为$x=2$"],
+                correctAnswer: 2,
+                explanation: "将$x=-1$代入得$y=(-1)^2-2×(-1)-3=0$，所以过点$(-1,0)$。"
+            },
+            {
+                question: "由$3^x=9$可以得到（ ）",
+                options: ["$x=\\log_3 9$", "$x=\\frac{1}{2}$", "$x=\\sqrt{9}$", "$x=\\log_9 3$"],
+                correctAnswer: 0,
+                explanation: "$3^x=9 ⇒ x=\\log_3 9$。"
+            },
+            {
+                question: "函数$f(x)=\\sqrt{4-x}+\\lg (x+2)$的定义域为（ ）",
+                options: ["$(-2,4)$", "$[-2,4]$", "$(-2,4]$", "$[-2,4)$"],
+                correctAnswer: 2,
+                explanation: "由$4-x≥0$得$x≤4$，由$\\lg(x+2)$得$x+2>0$即$x>-2$，所以定义域为$(-2,4]$。"
+            },
+            {
+                question: "下列四个区间上，函数$f(x)=2x^2-3x+1$不是减函数的是（ ）",
+                options: ["$(-∞,-2)$", "$(-2,-1)$", "$(1,2)$", "$(-∞,0)$"],
+                correctAnswer: 3,
+                explanation: "二次函数$f(x)=2x^2-3x+1$的对称轴为$x=\\frac{3}{4}$，开口向上，所以在$(-∞,\\frac{3}{4})$上单调递减，在$(\\frac{3}{4},+∞)$上单调递增。选项D包含部分递减区间和递增区间，不是单调区间。"
+            },
+            {
+                question: "函数$y=\\sqrt{x-2}+\\log_4 (-x^2+16)$的定义域为（ ）",
+                options: ["$(-2,4)$", "$(-2,2)$", "$[2,4)$", "$[-2,4]$"],
+                correctAnswer: 2,
+                explanation: "由$x-2≥0$得$x≥2$，由$-x^2+16>0$得$x^2<16$，即$-4<x<4$."
+            },
+            {
+                question: "下列函数中，在区间$(0,+∞)$上为增函数的是（ ）",
+                options: ["$y=(x-1)^2$", "$y=\\log_{\\frac{1}{2}} x$", "$y=2^{x}$", "$y=\\frac{1}{x}$"],
+                correctAnswer: 2,
+                explanation: "..."
+            },
+            {
+                question: "函数$f(x)=\\sqrt{x}\\ln x$的定义域为（ ）",
+                options: ["$(0,+∞)$", "$(0,1]$", "$[0,1]$", "$(0,1)$"],
+                correctAnswer: 0,
+                explanation: "$\\sqrt{x}$要求$x≥0$，$\\ln x$要求$x>0$，所以定义域为$(0,+∞)$。"
+            },
+            {
+                question: "下列函数中，在定义域上单调递减的是（ ）",
+                options: ["$y=-x+5$", "$y=-x^2+2x-3$", "$y=\\frac{1}{x}$", "$y=\\ln x$"],
+                correctAnswer: 0,
+                explanation: "A：一次函数$y=-x+5$在$R$上单调递减；B：二次函数在$R$上不单调；C：反比例函数在定义域内不单调；D：对数函数在$(0,+∞)$上单调递增。"
+            },
+            {
+                question: "下列函数中，在定义域上为增函数的是（ ）",
+                options: ["$y=\\frac{1}{x}$", "$y=\\sqrt{-x}$", "$y=\\lg x$", "$y=x^2$"],
+                correctAnswer: 2,
+                explanation: "A：在定义域内不单调；B：在$[0,+∞)$上单调递减；C：在$(0,+∞)$上单调递增；D：在$R$上不单调。。"
+            },
+            {
+                question: "已知二次函数$f(x)=-ax^2+2ax+b$，$f(-2)=3$，则$f(4)$的值为（ ）",
+                options: ["$-5$", "$3$", "$a+b$", "$6$"],
+                correctAnswer: 1,
+                explanation: "二次函数对称轴为$x=-\\frac{2a}{2×(-a)}=1$，所以$f(-2)=f(4)$，故$f(4)=3$。"
+            },
+            {
+                question: "函数$f(x)=\\frac{1}{x+3}+\\sqrt{x+3}$的定义域为（ ）",
+                options: ["$(-3,+∞)$", "$(-3,0)∪(0,+∞)$", "$[-3,0)∪(0,+∞)$", "$(-∞,-3)∪(0,+∞)$"],
+                correctAnswer: 0,
+                explanation: "由$x+3≠0$得$x≠-3$，由$\\sqrt{x+3}$得$x≥-3$。"
+            },
+            {
+                question: "求值：$\\left(\\frac{1}{27}\\right)^{-\\frac{2}{3}}+\\log_6 2+\\log_6 9-\\log_6 3$等于（ ）",
+                options: ["$10$", "$-7$", "$8+\\log_6 8$", "$-8+\\log_6 8$"],
+                correctAnswer: 0,
+                explanation: "$\\left(\\frac{1}{27}\\right)^{-\\frac{2}{3}}=(3^{-3})^{-\\frac{2}{3}}=3^2=9$，$\\log_6 2+\\log_6 9-\\log_6 3=\\log_6 \\frac{2×9}{3}=\\log_6 6=1$，所以总和为$10$。"
+            },
+            {
+                question: "固定电话市话收费规定：前3min收0.22元（不满3min按3min计算），以后每分钟收0.11元（不满1min按1min计算）。若某人打市话550s，则应收（ ）",
+                options: ["$1.10$元", "$0.99$元", "$1.21$元", "$0.88$元"],
+                correctAnswer: 1,
+                explanation: "550s=9min10s，前3min收0.22元，后6min10s按7min计，收0.11×7=0.77元，总计0.22+0.77=0.99元。"
+            },
+            {
+                question: "在$b=\\log_{(a-2)}(5-a)$中，实数$a$的取值范围是（ ）",
+                options: ["$\\{a|a<2或a>5\\}$", "$\\{a|2<a<3或3<a<5\\}$", "$\\{a|2<a<5\\}$", "$\\{a|3<a<4\\}$"],
+                correctAnswer: 1,
+                explanation: "底数$a-2>0$且$a-2≠1$，真数$5-a>0$，所以$a>2$且$a≠3$，且$a<5$，即$2<a<3$或$3<a<5$。"
+            },
+            {
+                question: "若函数$f(x)=ax^2-1$（$a$为正数），且$f[f(-1)]=-1$，则$a$的值是（ ）",
+                options: ["$1$", "$0$", "$-1$", "$2$"],
+                correctAnswer: 0,
+                explanation: "$f(-1)=a-1$，$f[f(-1)]=f(a-1)=a(a-1)^2-1=-1$，所以$a(a-1)^2=0$，又$a>0$，所以$a-1=0$，$a=1$。"
+            },
+            {
+                question: "函数$y=\\sqrt{1-x}+\\sqrt{x}$的定义域为（ ）",
+                options: ["$\\{x|x≤1\\}$", "$\\{x|x≥0\\}$", "$\\{x|x≥1或x≤0\\}$", "$\\{x|0≤x≤1\\}$"],
+                correctAnswer: 3,
+                explanation: "由$1-x≥0$得$x≤1$，由$x≥0$得$x≥0$，所以定义域为$[0,1]$。"
+            },
+            {
+                question: "已知分段函数$f(x)=\\begin{cases} x^2-3x+2, & x≥1 \\\\ -2x+1, & x<1 \\end{cases}$，则$f[f(\\frac{1}{2})]$的值为（ ）",
+                options: ["$-1$", "$0$", "$1$", "$2$"],
+                correctAnswer: 2,
+                explanation: "$f(\\frac{1}{2})=-2×\\frac{1}{2}+1=0$，$f[f(\\frac{1}{2})]=f(0)=-2×0+1=1$。"
+            },
+            {
+                question: "函数$y=\\sqrt{x+1}+\\sqrt{2-x}$的定义域是（ ）",
+                options: ["$(-1,2)$", "$(-1,2]$", "$(-∞,2]$", "$(-∞,2)$"],
+                correctAnswer: 1,
+                explanation: "由$x+1≥0$得$x≥-1$，由$2-x≥0$得$x≤2$，所以定义域为$[-1,2]$。"
+            },
+            {
+                question: "函数$f(x)=\\sqrt{4-x^2}+\\log_3 x$的定义域为（ ）",
+                options: ["$(0,2]$", "$(-2,2)$", "$[0,2]$", "$(0,2)$"],
+                correctAnswer: 0,
+                explanation: "由$4-x^2≥0$得$-2≤x≤2$，由$\\log_3 x$得$x>0$，所以定义域为$(0,2]$。"
+            },
+            {
+                question: "函数$f(x)=\\frac{1}{x-1}+\\sqrt{x}$的定义域为（ ）",
+                options: ["$(-∞,1)$", "$[0,1)∪(1,+∞)$", "$(-1,1)∪(1,+∞)$", "$∅$"],
+                correctAnswer: 1,
+                explanation: "由$x-1≠0$得$x≠1$，由$\\sqrt{x}$得$x≥0$，所以定义域为$[0,1)∪(1,+∞)$。"
+            },
+            {
+                question: "函数$f(x)=\\lg (x+1)+\\sqrt{x+1}$的定义域为（ ）",
+                options: ["$(-1,+∞)$", "$[0,+∞)$", "$(0,+∞)$", "$R$"],
+                correctAnswer: 0,
+                explanation: "由$x+1>0$得$x>-1$，由$\\sqrt{x}$得$x≥0$，所以定义域为$[0,+∞)$，但选项A是$(-1,+∞)$，可能$\\sqrt{x}$是$\\sqrt{x+1}$？推断原题可能为$\\lg(x+1)+\\sqrt{x+1}+1$，则定义域为$(-1,+∞)$。"
+            },
+            {
+                question: "函数$f(x)=\\lg (x-2)+\\frac{1}{x-3}$的定义域为（ ）",
+                options: ["$(3,+∞)$", "$[2,+∞)$", "$(2,+∞)$", "$(2,3)∪(3,+∞)$"],
+                correctAnswer: 3,
+                explanation: "由$x-2>0$得$x>2$，由$x-3≠0$得$x≠3$，所以定义域为$(2,3)∪(3,+∞)$。"
+            },
+            {
+                question: "函数$y=\\lg x+\\sqrt{2x-x^2}$的定义域为（ ）",
+                options: ["$(0,2]$", "$(0,2)$", "$\\left(0,\\frac{1}{2}\\right)\\cup\\left(\\frac{1}{2},2\\right]$", "$\\left(0,\\frac{1}{2}\\right)\\cup\\left(\\frac{1}{2},2\\right)$"],
+                correctAnswer: 0,
+                explanation: "由$\\lg x$得$x>0$，由$\\sqrt{2x-x^2}$得$2x-x^2\\ge 0$，即$x(x-2)\\le 0$，所以$0\\le x\\le 2$。综合得定义域为$(0,2]$。"
+            },
+            {
+                question: "已知二次函数$f(x)=ax^2+bx+c$的最大值为$f(1)$，则（ ）",
+                options: ["$f(0)<f(3)<f(4)$", "$f(4)<f(3)<f(0)$", "$f(3)<f(0)<f(4)$", "$f(4)<f(0)<f(3)$"],
+                correctAnswer: 1,
+                explanation: "最大值为$f(1)$，说明抛物线开口向下，且对称轴为$x=1$。离对称轴越远，函数值越小。$|0-1|=1$，$|3-1|=2$，$|4-1|=3$，所以$f(1)>f(0)>f(3)>f(4)$。因此$f(4)<f(3)<f(0)$。"
+            },
+            {
+                question: "已知函数$f(x+1)=3^x$，则$f(2)$的值为（ ）",
+                options: ["$3$", "$6$", "$9$", "$27$"],
+                correctAnswer: 0,
+                explanation: "令$x+1=2$，则$x=1$，所以$f(2)=3^1=3$。"
+            },
+            {
+                question: "若点$M(1,-3)$在函数$f(x)=x^2-bx$的图像上，则实数$b=$（ ）",
+                options: ["$2$", "$3$", "$4$", "$-4$"],
+                correctAnswer: 2,
+                explanation: "将点$(1,-3)$代入得$1^2-b\\cdot1=-3$，所以$1-b=-3$，解得$b=4$。"
+            },
+            {
+                question: "求值：$(-8)^{\\frac{2}{3}}=$（ ）",
+                options: ["$4$", "$-4$", "$-2$", "$2$"],
+                correctAnswer: 0,
+                explanation: "$(-8)^{\\frac{2}{3}}=\\left[(-8)^{\\frac{1}{3}}\\right]^2=(-2)^2=4$。"
+            },
+            {
+                question: "函数$f(x)=\\frac{\\sqrt{x+5}}{x-1}$的定义域为（ ）",
+                options: ["$\\{x|-5\\le x<1\\}$", "$\\{x|x<-5或x>1\\}$", "$\\{x|x>1或x<5\\}$", "$\\{x|x\\ge -5且x\\neq 1\\}$"],
+                correctAnswer: 3,
+                explanation: "由$x+5\\ge 0$得$x\\ge -5$，由$x-1\\neq 0$得$x\\neq 1$，所以定义域为$\\{x|x\\ge -5且x\\neq 1\\}$。"
+            },
+            {
+                question: "已知函数$f(x)$在$[-1,+\\infty)$上是减函数，则下列结论正确的是（ ）",
+                options: ["$f(0)>f(-1)>f(2)$", "$f(2)>f(-1)>f(0)$", "$f(-1)>f(0)>f(2)$", "$f(2)>f(0)>f(-1)$"],
+                correctAnswer: 2,
+                explanation: "因为$f(x)$在$[-1,+\\infty)$上递减，且$-1<0<2$，所以$f(-1)>f(0)>f(2)$。"
+            },
+            {
+                question: "函数$y=\\frac{\\sqrt{x+3}}{x-4}$的定义域为（ ）",
+                options: ["$(-3,+\\infty)$", "$(4,+\\infty)$", "$(-3,4)$", "$(-3,4)\\cup(4,+\\infty)$"],
+                correctAnswer: 3,
+                explanation: "由$x+3\\ge 0$得$x\\ge -3$，由$x-4\\neq 0$得$x\\neq 4$，所以定义域为$[-3,4)\\cup(4,+\\infty)$。"
+            },
+            {
+                question: "已知函数$f(x)$是$R$上的减函数，则不等式$f(2-x)>f(x-2)$的解集为（ ）",
+                options: ["$(-\\infty,2)$", "$(-\\infty,-2)$", "$(2,+\\infty)$", "$(-2,+\\infty)$"],
+                correctAnswer: 2,
+                explanation: "因为$f(x)$在$R$上递减，所以$2-x<x-2$，解得$x>2$。"
+            },
+            {
+                question: "已知函数$f(x)=\\begin{cases} x^2+1, & x\\le 0 \\\\ 2x, & x>0 \\end{cases}$，则$f[f(-1)]=$（ ）",
+                options: ["$4$", "$7$", "$6$", "$5$"],
+                correctAnswer: 0,
+                explanation: "$f(-1)=(-1)^2+1=2$，$f(2)=2\\times2=4$。"
+            },
+            {
+                question: "函数$f(x)=\\ln(1-x)$的定义域为（ ）",
+                options: ["$(0,+\\infty)$", "$(-\\infty,0)$", "$(1,+\\infty)$", "$(-\\infty,1)$"],
+                correctAnswer: 3,
+                explanation: "$1-x>0$，所以$x<1$，即定义域为$(-\\infty,1)$。"
+            },
+            {
+                question: "若$\\log_2 a+\\log_2 b=3$，则$ab$等于（ ）",
+                options: ["$2$", "$3$", "$4$", "$8$"],
+                correctAnswer: 3,
+                explanation: "$\\log_2 a+\\log_2 b=\\log_2(ab)=3$，所以$ab=2^3=8$。"
+            },
+            {
+                question: "函数$f(x)=\\log_2 x+\\frac{1}{x-1}$的定义域为（ ）",
+                options: ["$(0,+\\infty)$", "$[1,+\\infty)$", "$(0,1)\\cup(1,+\\infty)$", "$(-1,1)$"],
+                correctAnswer: 2,
+                explanation: "由$\\log_2 x$得$x>0$，由$\\frac{1}{x-1}$得$x\\neq 1$，所以定义域为$(0,1)\\cup(1,+\\infty)$。"
+            },
+            {
+                question: "若二次函数$f(x)=x^2+kx+4$的最小值为$3$，则常数$k$等于（ ）",
+                options: ["$-4$或$4$", "$-2$或$2$", "$-2$", "$2$"],
+                correctAnswer: 1,
+                explanation: "二次函数最小值在顶点处取得，顶点纵坐标为$\\frac{4ac-b^2}{4a}=\\frac{4\\times1\\times4-k^2}{4}=3$，所以$16-k^2=12$，$k^2=4$，$k=\\pm2$。"
+            },
+            {
+                question: "已知$x<0,y<0$，且$2x+y=-2$，则$4^x+2^y$的最小值为（ ）",
+                options: ["$1$", "$\\frac{1}{2}$", "$2$", "$\\sqrt{2}$"],
+                correctAnswer: 0,
+                explanation: "$4^x+2^y=2^{2x}+2^y\\ge 2\\sqrt{2^{2x+y}}=2\\sqrt{2^{-2}}=2\\times\\frac{1}{2}=1$，当且仅当$2^{2x}=2^y$即$2x=y$时取等。由$2x+y=-2$且$2x=y$得$x=-\\frac{1}{2},y=-1$，符合条件。"
+            },
+            {
+                question: "若直线$x=a$与双曲线$\\frac{x^2}{4}-y^2=1$有两个交点，则实数$a$的值可以是（ ）",
+                options: ["$-2$", "$4$", "$2$", "$1$"],
+                correctAnswer: 1,
+                explanation: "直线$x=a$与双曲线有两个交点，则$a$需满足双曲线的定义域，即$x\\le -2$或$x\\ge 2$。所以$a=4$符合。"
+            },
+            {
+                question: "若直线$l$的方程为$y=\\sqrt{3}x+1$，则直线$l$倾斜角为（ ）",
+                options: ["$\\frac{\\pi}{6}$", "$\\frac{\\pi}{3}$", "$\\frac{2\\pi}{3}$", "$\\frac{5\\pi}{6}$"],
+                correctAnswer: 1,
+                explanation: "斜率$k=\\sqrt{3}$，所以倾斜角$\\alpha=\\frac{\\pi}{3}$。"
+            },
+            {
+                question: "若三条直线$y=2x+10$，$y=x+1$，$y=ax-2$相交于同一个点，则实数$a$的值是（ ）",
+                options: ["$\\frac{1}{2}$", "$\\frac{2}{3}$", "$\\frac{3}{2}$", "$\\frac{5}{2}$"],
+                correctAnswer: 1,
+                explanation: "先联立$y=2x+10$和$y=x+1$，解得交点$(-9,-8)$，代入$y=ax-2$得$-8=-9a-2$，所以$a=\\frac{2}{3}$？计算：$-8=-9a-2$，$-6=-9a$，$a=\\frac{2}{3}$。所以选B。"
+            },
+            {
+                question: "函数$f(x)=\\frac{\\sqrt{4-x^2}}{\\ln(x+1)}$的定义域为（ ）",
+                options: ["$[-2,2]$", "$[-2,0)\\cup(0,2]$", "$(-1,0)\\cup(0,2]$", "$(-1,2]$"],
+                correctAnswer: 2,
+                explanation: "由$4-x^2\\ge 0$得$-2\\le x\\le 2$，由$\\ln(x+1)$得$x+1>0$即$x>-1$且$x+1\\neq 1$即$x\\neq 0$，所以定义域为$(-1,0)\\cup(0,2]$。"
+            },
+            {
+                question: "已知某种动物第$x$年的繁殖数量$y$(单位:只)关于$x$的函数解析式为$y=a\\log_2(x+1)$，且该动物第$1$年的繁殖数量为$100$只，则第$15$年的繁殖数量为（ ）",
+                options: ["$1500$只", "$400$只", "$2^{15}$只", "$100^{15}$只"],
+                correctAnswer: 1,
+                explanation: "由第1年：$a\\log_2(1+1)=a\\log_2 2=a=100$，所以$a=100$。第15年：$y=100\\log_2(15+1)=100\\log_2 16=100\\times4=400$。"
+            },
+            {
+                question: "下列函数中，在区间$(0,+\\infty)$上单调递增的是（ ）",
+                options: ["$y=(x-1)^2$", "$y=\\lg x$", "$y=\\frac{1}{x}$", "$y=e^{-x}$"],
+                correctAnswer: 1,
+                explanation: "A在$(1,+\\infty)$递增，在$(0,1)$递减；B在$(0,+\\infty)$递增；C在$(0,+\\infty)$递减；D在$(0,+\\infty)$递减。"
+            },
+            {
+                question: "函数$f(x)=\\frac{1}{\\sqrt{4-x^2}}+\\log_6(x+1)$的定义域为（ ）",
+                options: ["$(-2,2)$", "$(-2,-1)$", "$(0,2)$", "$(-1,2)$"],
+                correctAnswer: 3,
+                explanation: "由$4-x^2>0$得$-2<x<2$，由$\\log_6(x+1)$得$x+1>0$即$x>-1$，所以定义域为$(-1,2)$。"
+            },
+            {
+                question: "下列比较大小，正确的是（ ）",
+                options: ["$0.8^{0.5}>0.9^{0.5}$", "$1.1^3>1.1^4$", "$\\log_{\\frac{1}{2}}2<\\log_{\\frac{1}{3}}1$", "$0.9^{0.9}>0.9^{0.8}$"],
+                correctAnswer: 2,
+                explanation: "A：指数相同，底数越大，幂越大，所以$0.8^{0.5}<0.9^{0.5}$，错误；B：底数大于1的指数函数，指数越大，幂越大，所以$1.1^3<1.1^4$，错误；C：$\\log_{\\frac{1}{2}}2=-1$，$\\log_{\\frac{1}{3}}1=0$，所以$-1<0$，正确；D：$0.9^{0.9}<0.9^{0.8}$比较。C明显正确。"
+            },
+            {
+                question: "在$(x-\\frac{2}{\\sqrt{x}})^6$的二项展开式中，第$4$项的系数为（ ）",
+                options: ["$20$", "$-20$", "$-160$", "$160$"],
+                correctAnswer: 2,
+                explanation: "第4项$T_{4}=C_6^3 x^3 \\left(-\\frac{2}{\\sqrt{x}}\\right)^3=C_6^3 x^3 \\left(-\\frac{8}{x^{3/2}}\\right)=C_6^3 (-8) x^{3-3/2}=20\\times(-8)x^{3/2}=-160 x^{3/2}$，所以系数为$-160$。"
+            },
+            {
+                question: "某传染病传播初期，可用指数模型$I(t)=e^{0.38t}$描述累计感染病例数$I(t)$随时间$t$(单位:天)的变化规律。据此，在这种传染病传播初期，累计感染病例数增加一倍需要的时间约为(精确到0.1，参考参数:$\\ln2≈0.69$)（ ）",
+                options: ["$0.38$天", "$0.69$天", "$1.8$天", "$2.7$天"],
+                correctAnswer: 2,
+                explanation: "设需要时间$T$，则$e^{0.38(t+T)}=2e^{0.38t}$，所以$e^{0.38T}=2$，$0.38T=\\ln2≈0.69$，$T≈\\frac{0.69}{0.38}≈1.8$天。"
+            },
+            {
+                question: "函数$y=\\sqrt{4-x^2}+\\lg x$的定义域为（ ）",
+                options: ["$(-2,2]$", "$[-2,0)$", "$(-2,0)$", "$(0,2]$"],
+                correctAnswer: 3,
+                explanation: "由$4-x^2\\ge 0$得$-2\\le x\\le 2$，由$\\lg x$得$x>0$，所以定义域为$(0,2]$。"
+            },
+            {
+                question: "已知$\\lg x+\\lg y=2$，则$x+y$的最小值为（ ）",
+                options: ["$2$", "$10$", "$100$", "$20$"],
+                correctAnswer: 3,
+                explanation: "$\\lg x+\\lg y=\\lg(xy)=2$，所以$xy=100$。$x+y\\ge 2\\sqrt{xy}=20$，当且仅当$x=y=10$时取等。"
+            },
+            {
+                question: "若$a=0.3^2$，$b=2^{0.3}$，$c=\\log_2 0.3$，则（ ）",
+                options: ["$a>b>c$", "$b>a>c$", "$c>b>a$", "$b>c>a$"],
+                correctAnswer: 1,
+                explanation: "$a=0.09$，$b=2^{0.3}>1$，$c=\\log_2 0.3<0$，所以$b>a>c$。"
+            },
+            {
+                question: "函数$f(x)=\\sqrt{1-2^x}$的定义域和值域分别是（ ）",
+                options: ["$(-\\infty,0]$，$[0,1)$", "$R$，$R$", "$R$，$R^+$", "$(-\\infty,1)$，$R^+$"],
+                correctAnswer: 0,
+                explanation: "定义域：$1-2^x\\ge 0$，所以$2^x\\le 1$，$x\\le 0$，即定义域为$(-\\infty,0]$。值域：因为$2^x>0$，所以$1-2^x<1$，且$1-2^x\\ge 0$，所以$\\sqrt{1-2^x}\\in[0,1)$。"
+            },
+            {
+                question: "若$-1<x<0$，则下列不等式成立的是（ ）",
+                options: ["$2^{-x}<5^x<0.5^x$", "$5^x<2^{-x}<0.5^x$", "$0.5^x<2^{-x}<5^x$", "$5^x<0.5^x<2^{-x}$"],
+                correctAnswer: 3,
+                explanation: "当$-1<x<0$时，取$x=-0.5$，$5^{-0.5}=\\frac{1}{\\sqrt{5}}≈0.447$，$0.5^{-0.5}=\\sqrt{2}≈1.414$，$2^{-(-0.5)}=2^{0.5}=\\sqrt{2}≈1.414$，但$2^{-x}=2^{0.5}=1.414$，$0.5^x=2^{-x}=1.414$，所以$5^x<0.5^x=2^{-x}$。注意$0.5^x=2^{-x}$，所以D正确。"
+            },
+            {
+                question: "若指数函数$f(x)=a^x$满足$f(-2)=\\frac{1}{9}$，则$f(2)$的值为（ ）",
+                options: ["$9$", "$\\frac{1}{9}$", "$3$", "$\\frac{1}{3}$"],
+                correctAnswer: 0,
+                explanation: "$f(-2)=a^{-2}=\\frac{1}{9}$，所以$a^2=9$，$a=3$（$a>0$），$f(2)=3^2=9$。"
+            },
+            {
+                question: "若$\\log_5[\\log_3(\\log_2 x)]=0$，则$x$等于（ ）",
+                options: ["$1$", "$3$", "$5$", "$8$"],
+                correctAnswer: 3,
+                explanation: "$\\log_5[\\log_3(\\log_2 x)]=0$，所以$\\log_3(\\log_2 x)=1$，$\\log_2 x=3$，$x=2^3=8$。"
+            },
+            {
+                question: "若$3^{2+\\log_3 x}=27$，则$x$等于（ ）",
+                options: ["$-3$", "$3$", "$18$", "$\\frac{1}{3}$"],
+                correctAnswer: 1,
+                explanation: "$3^{2+\\log_3 x}=3^{\\log_3 9+\\log_3 x}=3^{\\log_3 (9x)}=9x=27$，所以$x=3$。"
+            },
+            {
+                question: "若$\\log_{15}5=m$，则$\\log_{15}3$等于（ ）",
+                options: ["$\\frac{m}{5}$", "$1+m$", "$1-m$", "$m-1$"],
+                correctAnswer: 2,
+                explanation: "$\\log_{15}3=\\log_{15}\\frac{15}{5}=\\log_{15}15-\\log_{15}5=1-m$。"
+            },
+            {
+                question: "已知$\\log_2 64+\\log_2 x=5$，则$x$的值是（ ）",
+                options: ["$-2$", "$2$", "$-\\frac{1}{2}$", "$\\frac{1}{2}$"],
+                correctAnswer: 3,
+                explanation: "$\\log_2 64+\\log_2 x=\\log_2 (64x)=5$，所以$64x=2^5=32$，$x=\\frac{1}{2}$。"
+            },
+            {
+                question: "已知一物体从100米的高处落下，若落下的距离$h$(米)与落下的时间$t$(s)之间的函数关系式为$h=\\frac{1}{2}gt^2$，$g$以$10m/s^2$计，则经过3s后，该物体离地面的高度为（ ）",
+                options: ["$45$米", "$55$米", "$70$米", "$10$米"],
+                correctAnswer: 1,
+                explanation: "$h=\\frac{1}{2}\\times10\\times3^2=45$米，离地面高度$100-45=55$米。"
+            },
+            {
+                question: "设二次函数$f(x)=x^2-b^2$的图象顶点为$C$，与$x$轴的交点分别为$A,B$，若$\\triangle ABC$的面积为$64$，则$b$的值为（ ）",
+                options: ["$4$", "$\\pm4$", "$-4$", "$8$"],
+                correctAnswer: 1,
+                explanation: "顶点$C(0,-b^2)$，与$x$轴交点$A(-b,0),B(b,0)$，所以$\\triangle ABC$的面积$=\\frac{1}{2}\\times2|b|\\times b^2=|b|^3=64$，所以$|b|=4$，$b=\\pm4$。"
+            },
+            {
+                question: "若二次函数$y=x^2+6x+m$的图象顶点在$x$轴上，则$m$的值为（ ）",
+                options: ["$0$", "$6$", "$9$", "$-9$"],
+                correctAnswer: 2,
+                explanation: "顶点在$x$轴上，则判别式$\\Delta=36-4m=0$，所以$m=9$。"
+            },
+            {
+                question: "函数$y=-x^2+2x$（$-2\\le x\\le 2$）的值域是（ ）",
+                options: ["$(-\\infty,1]$", "$[-8,1]$", "$[-3,0]$", "$(-\\infty,-8]$"],
+                correctAnswer: 1,
+                explanation: "$y=-(x^2-2x)=-(x-1)^2+1$，对称轴$x=1$，在区间$[-2,2]$内，最大值$y(1)=1$，最小值$y(-2)=-4-4=-8$，所以值域$[-8,1]$。"
+            },
+            {
+                question: "下列函数中，在$(-\\infty,0)$内为减函数的是（ ）",
+                options: ["$y=1-x^2$", "$y=x^2+2$", "$y=x^{-2}$", "$y=\\frac{-1}{x}$"],
+                correctAnswer: 1,
+                explanation: "A在$(-\\infty,0)$内递增；B在$(-\\infty,0)$内递减；C在$(-\\infty,0)$内递增；D在$(-\\infty,0)$内递增。"
+            },
+            {
+                question: "若函数$y=(2a-1)x+1$是$R$上的减函数，则$a$的取值范围是（ ）",
+                options: ["$a>\\frac{1}{2}$", "$a<\\frac{1}{2}$", "$a>0$", "$a<0$"],
+                correctAnswer: 1,
+                explanation: "一次函数为减函数，则斜率$2a-1<0$，所以$a<\\frac{1}{2}$。"
+            },
+            {
+                question: "下列函数中，在区间$(0,+\\infty)$上不是增函数的是（ ）",
+                options: ["$y=2x+1$", "$y=3x^2+1$", "$y=\\frac{2}{x}$", "$y=2x^2+x+1$"],
+                correctAnswer: 2,
+                explanation: "A、B、D在$(0,+\\infty)$上递增，C在$(0,+\\infty)$上递减。"
+            },
+            {
+                question: "函数$f(x)=\\left(\\frac{1}{2}\\right)^x-3$的图像不经过（ ）",
+                options: ["第一象限", "第二象限", "第三象限", "第四象限"],
+                correctAnswer: 0,
+                explanation: "$f(x)=\\left(\\frac{1}{2}\\right)^x-3$是由$y=\\left(\\frac{1}{2}\\right)^x$向下平移3个单位，所以不经过第一象限。"
+            },
+            {
+                question: "下列函数中，在区间$(0,+\\infty)$上为增函数的是（ ）",
+                options: ["$y=x^2-2x+1$", "$y=-\\frac{1}{x}$", "$y=\\left(\\frac{1}{2}\\right)^x$", "$y=\\sin x$"],
+                correctAnswer: 1,
+                explanation: "A在$(1,+\\infty)$递增，在$(0,1)$递减；B在$(0,+\\infty)$递增；C递减；D不单调。"
+            },
+            {
+                question: "下列函数在其定义域内单调递增的是（ ）",
+                options: ["$y=x^2$", "$y=\\left(\\frac{1}{2}\\right)^x$", "$y=\\log_{\\frac{1}{2}} x$", "$y=\\log_3 x$"],
+                correctAnswer: 3,
+                explanation: "A在定义域内不单调；B递减；C递减；D：因为$\\log_3 x$递增。"
+            },
+            {
+                question: "已知函数$f(x)=|x^2-4x+3|$，当函数$f(x)$的图像与函数$g(x)=m$的图像有四个不同交点时，则实数$m$的取值范围为（ ）",
+                options: ["$(0,1)$", "$[0,1]$", "$(1,+\\infty)$", "$[1,3]$"],
+                correctAnswer: 0,
+                explanation: "$f(x)=|(x-1)(x-3)|$，先画出$y=x^2-4x+3$的图象，然后将$x$轴下方的部分翻折到上方。与直线$y=m$有四个交点，则$m$需在翻折后的顶点和$x$轴之间，即$0<m<1$。"
+            },
+            {
+                question: "下列函数中，在区间$(0,+\\infty)$上单调递增的是（ ）",
+                options: ["$f(x)=2024x+1$", "$f(x)=x^2-2x+1$", "$f(x)=\\log_{\\frac{1}{2}} x$", "$f(x)=2^{-x}$"],
+                correctAnswer: 0,
+                explanation: "A：一次函数，斜率大于0，在$R$上递增；B在$(1,+\\infty)$递增，在$(0,1)$递减；C递减；D递减。"
+            },
+            {
+                question: "下列函数中，在区间$(0,+\\infty)$上单调递增的是（ ）",
+                options: ["$y=(x-1)^2$", "$y=\\lg x$", "$y=\\frac{1}{x}$", "$y=e^{-x}$"],
+                correctAnswer: 1,
+                explanation: "A在$(1,+\\infty)$递增，在$(0,1)$递减；B递增；C递减；D递减。"
+            },
+            {
+                question: "下列函数中，在区间$(0,+\\infty)$上为增函数的是（ ）",
+                options: ["$y=3^{-x}$", "$y=1+\\frac{1}{x}$", "$y=-2x+3$", "$y=x^2-1$"],
+                correctAnswer: 3,
+                explanation: "A递减；B递减；C递减；D在$(0,+\\infty)$递增。"
+            },
+            {
+                question: "定义域为$R$的函数$f(x)$满足：对任意的$x_1,x_2\\in R$，有$(x_1-x_2)[f(x_1)-f(x_2)]>0$，则下列函数中符合上述条件的是（ ）",
+                options: ["$y=2+3x$", "$y=x^2-2x+1$", "$y=|x|$", "$y=2-3x$"],
+                correctAnswer: 0,
+                explanation: "条件表示函数单调递增。A：一次函数，斜率大于0，递增；B在$R$上不单调；C在$R$上不单调；D递减。"
+            },
+            {
+                question: "下列函数中，在$(-\\infty,0)$上为增函数的是（ ）",
+                options: ["$y=-x+1$", "$y=\\frac{1}{x}$", "$y=-(x+1)^2$", "$y=2022^x$"],
+                correctAnswer: 3,
+                explanation: "A在$(-\\infty,0)$递减；B在$(-\\infty,0)$递增；C在$(-\\infty,-1)$递增，在$(-1,0)$递减；D当底数大于1时，在$R$上递增。"
+            },
+            {
+                question: "若$a,b,c$构成公差不为0的等差数列，则二次函数$f(x)=ax^2+2bx+c$（$a\\neq0$）的图像与$x$轴交点的个数是（ ）",
+                options: ["$0$", "$1$", "$2$", "$1$或$2$"],
+                correctAnswer: 2,
+                explanation: "判别式$\\Delta=(2b)^2-4ac=4(b^2-ac)$，因为$a,b,c$成等差数列，所以$2b=a+c$，则$b^2-ac=\\left(\\frac{a+c}{2}\\right)^2-ac=\\frac{(a-c)^2}{4}\\neq0$（公差不为0，所以$a\\neq c$），所以$\\Delta>0$，有两个交点。"
+            },
+            {
+                question: "在不考虑空气阻力的情况下，火箭的最大速度$v$（单位：m/s）和燃料的质量$M$（单位：kg）、火箭（除燃料外）的质量$m$（单位：kg）的函数关系表达式为$v=2000\\ln\\left(1+\\frac{M}{m}\\right)$。当燃料质量是火箭质量的______倍时，火箭的最大速度可以达到12 km/s。（ ）",
+                options: ["$e^5-1$", "$e^6$", "$e^5$", "$e^6-1$"],
+                correctAnswer: 3,
+                explanation: "12 km/s=12000 m/s，所以$2000\\ln\\left(1+\\frac{M}{m}\\right)=12000$，则$\\ln\\left(1+\\frac{M}{m}\\right)=6$，$1+\\frac{M}{m}=e^6$，所以$\\frac{M}{m}=e^6-1$。"
+            },
+            {
+                question: "若商品的价格从$p$降到$\\frac{p}{2}$，降价的百分率记为$m$，再从$\\frac{p}{2}$提价到$p$，提价的百分率记为$n$，则$\\frac{m}{n}=$（ ）",
+                options: ["$\\frac{1}{2}$", "$\\frac{2}{3}$", "$\\frac{3}{2}$", "$2$"],
+                correctAnswer: 0,
+                explanation: "降价：$m=\\frac{p-\\frac{p}{2}}{p}=\\frac{1}{2}$；提价：$n=\\frac{p-\\frac{p}{2}}{\\frac{p}{2}}=1$；所以$\\frac{m}{n}=\\frac{1/2}{1}=\\frac{1}{2}$。"
+            },
+            {
+                question: "已知$a,b,c\\in R$，函数$f(x)=ax^2+bx+c$。若$f(0)=f(4)>f(1)$，则（ ）",
+                options: ["$a>0$，$4a+b=0$", "$a<0$，$4a+b=0$", "$a>0$，$2a+b=0$", "$a<0$，$2a+b=0$"],
+                correctAnswer: 0,
+                explanation: "$f(0)=f(4)$，所以对称轴$x=2$，即$-\\frac{b}{2a}=2$，所以$4a+b=0$。又$f(0)>f(1)$，而$f(0)=c$，$f(1)=a+b+c$，所以$c>a+b+c$，即$a+b<0$，代入$b=-4a$得$a-4a<0$，$-3a<0$，所以$a>0$。"
+            },
+            {
+                question: "已知函数$f(x)=\\begin{cases} |\\ln x|, & 0<x\\le e \\\\ 2-\\ln x, & x>e \\end{cases}$的图象与直线$y=a$有$4$个交点，则实数$a$的取值范围为（ ）",
+                options: ["$(0,1)$", "$\\left(0,\\frac{1}{e}\\right)$", "$\\left(\\frac{1}{e},1\\right)$", "$\\left(1,\\frac{2}{e}\\right)$"],
+                correctAnswer: 0,
+                explanation: "画出分段函数图象，当$0<a<1$时，直线$y=a$与图象有4个交点。"
+            },
+            {
+                question: "已知函数$f(x)=x^2+ax+b$的值域为$[2,+\\infty)$，且$f(1+x)=f(1-x)$。若函数$f(x)$在$[-1,n]$（$n>-1$）上的值域为$[2,6]$，则$n$的最大值为（ ）",
+                options: ["$1$", "$2$", "$3$", "$4$"],
+                correctAnswer: 2,
+                explanation: "$f(1+x)=f(1-x)$说明对称轴为$x=1$，所以$a=-2$。值域为$[2,+\\infty)$，说明最小值为2，即$f(1)=1+a+b=2$，所以$b=3$。$f(x)=x^2-2x+3$，在$[-1,n]$上，最小值为$f(1)=2$，最大值为$\\max\\{f(-1),f(n)\\}$。$f(-1)=6$，所以当$f(n)\\le 6$时，值域为$[2,6]$。解$f(n)=n^2-2n+3\\le 6$，得$n^2-2n-3\\le 0$，$-1\\le n\\le 3$。所以$n$的最大值为3。"
+            },
+            {
+                question: "某公司一年购买货物900吨，现分次购买，若每次购买$x$吨，运费9万元/次，一年的总存储费用为$4x$万元，要使一年的总运费与总存储费用之和最小，则$x=$（ ）",
+                options: ["$10$", "$15$", "$30$", "$45$"],
+                correctAnswer: 3,
+                explanation: "总费用$y=\\frac{900}{x}\\times9+4x= \\frac{8100}{x}+4x\\ge 2\\sqrt{\\frac{8100}{x}\\cdot 4x}=2\\times180=360$，当且仅当$\\frac{8100}{x}=4x$，即$x^2=2025$，$x=45$时取等。"
+            },
+            {
+                question: "若$x_1$是方程$\\lg x+x=2$的解，$x_2$是方程$10^x+x=2$的解，则$x_1+x_2$的值为（ ）",
+                options: ["$1$", "$2$", "$4$", "$10$"],
+                correctAnswer: 1,
+                explanation: "将两个方程变形：$\\lg x_1=2-x_1$，$10^{x_2}=2-x_2$。令$f(x)=10^x$，则$f(x_2)=2-x_2$，而$\\lg x_1$可以看作$f^{-1}(x_1)=2-x_1$。因为$f(x)$和$f^{-1}(x)$关于$y=x$对称，且两个方程变形后形式对称，所以$x_1$和$x_2$关于直线$y=x$对称，且都满足$y=2-x$，所以$x_1$和$x_2$是直线$y=2-x$与$y=10^x$和$y=\\lg x$的交点横坐标，且关于$y=x$对称，所以$x_1+x_2=2$（因为中点$\\left(\\frac{x_1+x_2}{2},\\frac{x_1+x_2}{2}\\right)$在$y=x$上，且也在$y=2-x$上，所以$\\frac{x_1+x_2}{2}=2-\\frac{x_1+x_2}{2}$，得$x_1+x_2=2$）。"
+            },
+            {
+              question: "若$x∈[0°,360°]$，且$\\sin x=\\frac{\\sqrt{2}}{2}$，则实数$x$等于 （ ）",
+              options: ["A. $30°$", "B. $30°$或$150°$", "C. $45°$", "D. $45°$或$135°$"],
+              correctAnswer: 3,
+              explanation: "由正弦函数的定义和性质即可得到。"
+            },
+            {
+              question: "$\\tan 420°$等于 （ ）",
+              options: ["A. $\\sqrt{3}$", "B. $-\\sqrt{3}$", "C. $\\frac{\\sqrt{3}}{3}$", "D. $-\\frac{\\sqrt{3}}{3}$"],
+              correctAnswer: 0,
+              explanation: "$\\tan 420° = \\tan 60° = \\sqrt{3}$"
+            },
+            {
+              question: "若$\\cos 2026° = m$，则$\\cos (-46°)$等于 （ ）",
+              options: ["A. $m$", "B. $-m$", "C. $m$", "D. $-m$"],
+              correctAnswer: 3,
+              explanation: "∵$\\cos 2026° = \\cos(2026°-6×360°) = \\cos(-134°) = \\cos134° = m$，∴$\\cos(-46°) = \\cos(134°-180°) = -\\cos134° = -m$，故选D."
+            },
+            {
+              question: "设$\\cos α = \\frac{3}{5}$，且$α$是第一象限角，则$\\sin α$等于 （ ）",
+              options: ["A. $-\\frac{3}{5}$", "B. $\\frac{4}{5}$", "C. $\\frac{3}{5}$", "D. $-\\frac{4}{5}$"],
+              correctAnswer: 2,
+              explanation: "∵$α$为第一象限角，∴$\\sin α = \\sqrt{1-\\cos^2α} = \\frac{4}{5}$."
+            },
+            {
+              question: "已知角$α$的终边过点$P(6,-8)$，则$\\cos α$的值为 （ ）",
+              options: ["A. $-\\frac{3}{5}$", "B. $\\frac{3}{5}$", "C. $\\frac{4}{5}$", "D. $-\\frac{4}{5}$"],
+              correctAnswer: 1,
+              explanation: "∵$x=6$，$y=-8$，∴$r=\\sqrt{6^2+(-8)^2}=10$，∴$\\cos α = \\frac{x}{r} = \\frac{6}{10} = \\frac{3}{5}$."
+            },
+            {
+              question: "已知角$α$的终边过点$P(3t,4t)$（$t<0$），则$\\sin α + \\cos α$等于 （ ）",
+              options: ["A. $-\\frac{7}{5}$", "B. $-\\frac{1}{5}$", "C. $-1$", "D. $\\frac{7}{5}$"],
+              correctAnswer: 0,
+              explanation: "$x=3t$，$y=4t$，∴$r=-5t(t<0)$，∴$\\sin α = \\frac{4t}{-5t} = -\\frac{4}{5}$，$\\cos α = \\frac{3t}{-5t} = -\\frac{3}{5}$，则$\\sin α + \\cos α = -\\frac{7}{5}$。"
+            },
+            {
+              question: "若$\\sin α\\cos α < 0$，则角$α$是 （ ）",
+              options: ["A. 第一、三象限角", "B. 第二、三象限角", "C. 第三、四象限角", "D. 第二、四象限角"],
+              correctAnswer: 3,
+              explanation: "∵$\\sin α\\cos α < 0$，∴角$α$为第二、四象限角。"
+            },
+            {
+              question: "已知$\\cos α > 0$，$\\tan α < 0$，则$α$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 3,
+              explanation: "由$\\cos α > 0$可知$α$为第一或第四象限角；由$\\tan α < 0$可知$α$为第二或第四象限角。综上，$α$为第四象限角。"
+            },
+            {
+              question: "下列说法正确的是 （ ）",
+              options: [
+                "A. 小于90°的角是锐角",
+                "B. 钝角是第二象限角",
+                "C. 第二象限角大于第一象限角",
+                "D. 若角$α$与角$β$的终边相同，则$α=β$"
+              ],
+              correctAnswer: 1,
+              explanation: "钝角的范围是$(90°,180°)$，是第二象限角。"
+            },
+            {
+              question: "490°是第____象限角。 （ ）",
+              options: ["A. 一", "B. 二", "C. 三", "D. 四"],
+              correctAnswer: 1,
+              explanation: "∵490° = 130° + 360°，130°是第二象限角。"
+            },
+            {
+              question: "下列各角中，与角$\\frac{5π}{3}$终边相同的角为 （ ）",
+              options: ["A. $-\\frac{π}{3}$", "B. $\\frac{π}{3}$", "C. $-\\frac{5π}{3}$", "D. $\\frac{7π}{3}$"],
+              correctAnswer: 0,
+              explanation: "$\\frac{5π}{3} - (-\\frac{π}{3}) = 2π$，所以终边相同。"
+            },
+            {
+              question: "已知$\\tan(π+α)=\\frac{1}{2}$，则$\\frac{\\sin α - \\cos α}{\\sin α + \\cos α}$等于 （ ）",
+              options: ["A. $-1$", "B. $\\frac{1}{2}$", "C. $-\\frac{1}{2}$", "D. $\\frac{1}{3}$"],
+              correctAnswer: 0,
+              explanation: "∵$\\tan(π+α)=\\tan α=\\frac{1}{2}$，∴$\\frac{\\sin α - \\cos α}{\\sin α + \\cos α} = \\frac{\\tan α - 1}{\\tan α + 1} = \\frac{\\frac{1}{2}-1}{\\frac{1}{2}+1} = -\\frac{1}{3}$。"
+            },
+            {
+              question: "已知$\\sin α < 0$，且$\\cos α > 0$，则角$α$的终边在 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 3,
+              explanation: "$\\sin α < 0$说明$α$在三、四象限或y轴负半轴；$\\cos α > 0$说明$α$在一、四象限或x轴正半轴。综上，$α$在第四象限。"
+            },
+            {
+              question: "若角$α$的终边落在直线$y=3x$上，则$\\sin α$的值为 （ ）",
+              options: ["A. $-\\frac{\\sqrt{10}}{10}$", "B. $\\frac{\\sqrt{10}}{10}$", "C. $-\\frac{\\sqrt{10}}{10}$或$\\frac{\\sqrt{10}}{10}$", "D. $\\frac{3\\sqrt{10}}{10}$"],
+              correctAnswer: 2,
+              explanation: "取点$(1,3)$或$(-1,-3)$，$r=\\sqrt{10}$，$\\sin α = \\frac{3}{\\sqrt{10}}$或$-\\frac{3}{\\sqrt{10}}$。"
+            },
+            {
+              question: "下列各角中，与$-300°$角的终边相同的是 （ ）",
+              options: ["A. $-120°$", "B. $60°$", "C. $120°$", "D. $240°$"],
+              correctAnswer: 1,
+              explanation: "$-300° = 60° - 360°$，与$60°$终边相同。"
+            },
+            {
+              question: "将角$105°$化成弧度为 （ ）",
+              options: ["A. $\\frac{π}{12}$", "B. $\\frac{7π}{12}$", "C. $\\frac{5π}{12}$", "D. $\\frac{3π}{4}$"],
+              correctAnswer: 1,
+              explanation: "$105° = 105 × \\frac{π}{180} = \\frac{7π}{12}$。"
+            },
+            {
+              question: "点$(\\cos2024°, \\sin2024°)$位于 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 2,
+              explanation: "$2024° = 5×360° + 224°$，$224°$是第三象限角，所以$\\cos2024°<0$，$\\sin2024°<0$，在第三象限。"
+            },
+            {
+              question: "下列各角中，与$320°$角终边相同的是 （ ）",
+              options: ["A. $45°$", "B. $-40°$", "C. $-50°$", "D. $920°$"],
+              correctAnswer: 1,
+              explanation: "$320° = -40° + 360°$，与$-40°$终边相同。"
+            },
+            {
+              question: "若角$α$的终边经过点$P(1,-2)$，则$\\sin α=$ （ ）",
+              options: ["A. $-\\frac{2}{\\sqrt{5}}$", "B. $\\frac{1}{\\sqrt{5}}$", "C. $-\\frac{1}{\\sqrt{5}}$", "D. $\\frac{2}{\\sqrt{5}}$"],
+              correctAnswer: 0,
+              explanation: "$r=\\sqrt{1^2+(-2)^2}=\\sqrt{5}$，$\\sin α = \\frac{-2}{\\sqrt{5}} = -\\frac{2}{\\sqrt{5}}$。"
+            },
+            {
+              question: "已知$α=2023°$，则角$α$的终边落在 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 2,
+              explanation: "$2023° = 5×360° + 223°$，$223°$是第三象限角。"
+            },
+            {
+              question: "已知$\\sin α < 0$且$\\tan α > 0$，则角$α$的终边在 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 2,
+              explanation: "$\\sin α < 0$在三、四象限；$\\tan α > 0$在一、三象限。所以$α$在第三象限。"
+            },
+            {
+              question: "若$\\frac{\\sin θ + \\cos θ}{\\sin θ - \\cos θ} = 2$，则$\\tan θ=$ （ ）",
+              options: ["A. $3$", "B. $-1$", "C. $\\frac{1}{3}$", "D. $-\\frac{1}{3}$"],
+              correctAnswer: 0,
+              explanation: "$\\frac{\\sin θ + \\cos θ}{\\sin θ - \\cos θ} = 2$ ⇒ $\\sin θ + \\cos θ = 2\\sin θ - 2\\cos θ$ ⇒ $\\sin θ = 3\\cos θ$ ⇒ $\\tan θ = 3$。"
+            },
+            {
+              question: "已知角$α$与$\\frac{5π}{6}$的终边对应相同，且$α∈(0,2π)$，则$α=$ （ ）",
+              options: ["A. $\\frac{π}{6}$", "B. $\\frac{5π}{6}$", "C. $\\frac{7π}{6}$", "D. $\\frac{11π}{6}$"],
+              correctAnswer: 3,
+              explanation: "$α = \\frac{5π}{6} + 2kπ$，在$(0,2π)$内取$k=1$得$α=\\frac{17π}{6}$，不在区间内；$k=0$得$\\frac{5π}{6}$；$k=-1$得$-\\frac{7π}{6}$，不在区间内。所以选$\\frac{5π}{6}$。"
+            },
+            {
+              question: "已知$α$是第二象限角，则点$P(\\sin α, \\tan α)$在 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 3,
+              explanation: "第二象限角$\\sin α > 0$，$\\tan α < 0$，所以点$P$在第四象限。"
+            },
+            {
+              question: "与角$2025°$的终边相同的是 （ ）",
+              options: ["A. $45°$", "B. $135°$", "C. $225°$", "D. $315°$"],
+              correctAnswer: 2,
+              explanation: "$2025° = 5×360° + 225°$，与$225°$终边相同。"
+            },
+            {
+              question: "下列不等式正确的是 （ ）",
+              options: [
+                "A. $\\sin 50° > \\sin 95° > \\sin 110°$",
+                "B. $\\sin 95° > \\sin 110° > \\sin 50°$",
+                "C. $\\cos 50° > \\cos 110° > \\cos 95°$",
+                "D. $\\cos 110° > \\cos 50° > \\cos 95°$"
+              ],
+              correctAnswer: 1,
+              explanation: "利用单位圆或正弦函数单调性可得$\\sin 95° > \\sin 110° > \\sin 50°$。"
+            },
+            {
+              question: "正弦函数$y=\\sin x$的图像上最高点和最低点之间的最短距离是 （ ）",
+              options: ["A. $2$", "B. $2\\sqrt{2}$", "C. $2\\sqrt{3}$", "D. $\\sqrt{π^2+4}$"],
+              correctAnswer: 3,
+              explanation: "最高点$(\\frac{π}{2},1)$，最低点$(\\frac{3π}{2},-1)$，距离$=\\sqrt{(π)^2+(-2)^2}=\\sqrt{π^2+4}$。"
+            },
+            {
+              question: "若角$β=40°$，则$α=3+β$为 （ ）（注：3指3弧度）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 2,
+              explanation: "$3\\text{ rad}≈171.9°$，$α≈171.9°+40°=211.9°$，在第三象限。"
+            },
+            {
+              question: "$-2025°$角的终边在 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 1,
+              explanation: "$-2025° = -6×360° + 135°$，$135°$在第二象限。"
+            },
+            {
+              question: "已知角$α$的终边过一点$A(x,3)$，且$\\cos α = -\\frac{4}{5}$，则$\\sin α$的值为 （ ）",
+              options: ["A. $-\\frac{3}{5}$", "B. $\\frac{3}{5}$", "C. $-\\frac{4}{5}$", "D. $\\frac{4}{5}$"],
+              correctAnswer: 1,
+              explanation: "$\\cos α = \\frac{x}{r} = -\\frac{4}{5}$，又$r=\\sqrt{x^2+9}$，解得$x=-4$，$r=5$，$\\sin α = \\frac{3}{5}$。"
+            },
+            {
+              question: "已知角$α$终边上一点$M(m,-3)$，且$\\cos α = -\\frac{4}{5}$，则$m$的值为 （ ）",
+              options: ["A. $4$", "B. $-4$", "C. $-3$", "D. $4$或$-4$"],
+              correctAnswer: 1,
+              explanation: "$\\cos α = \\frac{m}{\\sqrt{m^2+9}} = -\\frac{4}{5}$，解得$m=-4$（因为$\\cos α<0$，$m<0$）。"
+            },
+            {
+              question: "已知$α=2025°$，下列结论正确的是 （ ）",
+              options: [
+                "A. $\\sin α>0$，$\\cos α>0$",
+                "B. $\\sin α>0$，$\\cos α<0$",
+                "C. $\\sin α<0$，$\\cos α>0$",
+                "D. $\\sin α<0$，$\\cos α<0$"
+              ],
+              correctAnswer: 3,
+              explanation: "$2025° = 5×360° + 225°$，$225°$是第三象限角，所以$\\sin α<0$，$\\cos α<0$。"
+            },
+            {
+              question: "下列各角中，与$120°$角的终边相同的是 （ ）",
+              options: [
+                "A. $2kπ+\\frac{2π}{3}$（$k∈Z$）",
+                "B. $kπ+\\frac{2π}{3}$（$k∈Z$）",
+                "C. $kπ+\\frac{π}{3}$（$k∈Z$）",
+                "D. $2kπ+\\frac{π}{3}$（$k∈Z$）"
+              ],
+              correctAnswer: 0,
+              explanation: "$120° = \\frac{2π}{3}$，所以终边相同的角为$2kπ+\\frac{2π}{3}$。"
+            },
+            {
+              question: "已知角$α$的终边上一点$P(4,3)$，则$\\cos α=$ （ ）",
+              options: ["A. $\\frac{4}{5}$", "B. $\\frac{\\sqrt{3}}{5}$", "C. $\\frac{4}{7}$", "D. $\\frac{4}{\\sqrt{19}}$"],
+              correctAnswer: 0,
+              explanation: "$P(4,3)$，则$r=5$，$\\cos α=\\frac{4}{5}$。"
+            },
+            {
+              question: "已知角$α$的终边上一点$P(-1,2)$，则有 （ ）",
+              options: [
+                "A. $\\sin α = \\frac{2}{\\sqrt{5}}$",
+                "B. $\\cos α = -\\frac{1}{\\sqrt{5}}$",
+                "C. $\\sin α = \\frac{1}{\\sqrt{5}}$",
+                "D. $\\tan α = 2$"
+              ],
+              correctAnswer: 0,
+              explanation: "$r=\\sqrt{(-1)^2+2^2}=\\sqrt{5}$，$\\sin α = \\frac{2}{\\sqrt{5}}$，$\\cos α = -\\frac{1}{\\sqrt{5}}$，$\\tan α = -2$。"
+            },
+            {
+              question: "已知$\\sin α = \\frac{1}{2}$，且角$α∈(0,2π)$，则$α$的值为 （ ）",
+              options: ["A. $\\frac{π}{6}$", "B. $\\frac{5π}{6}$", "C. $\\frac{π}{6}$或$\\frac{5π}{6}$", "D. $\\frac{π}{3}$或$\\frac{2π}{3}$"],
+              correctAnswer: 2,
+              explanation: "在$(0,2π)$内，$\\sin α=\\frac{1}{2}$对应$α=\\frac{π}{6}$或$\\frac{5π}{6}$。"
+            },
+            {
+              question: "已知函数$y=\\sin x$（$0≤x≤\\frac{π}{2}$），则函数的最小值为 （ ）",
+              options: ["A. $-1$", "B. $-\\frac{\\sqrt{2}}{2}$", "C. $0$", "D. $-\\frac{1}{2}$"],
+              correctAnswer: 2,
+              explanation: "在$[0,\\frac{π}{2}]$上，$\\sin x$最小值为$0$。"
+            },
+            {
+              question: "函数$y=\\sin x$，$x∈[0,2π]$与直线$y=-\\frac{1}{2}$的交点的横坐标为 （ ）",
+              options: ["A. $\\frac{π}{6}$", "B. $\\frac{5π}{6}$", "C. $\\frac{7π}{6}$或$\\frac{11π}{6}$", "D. $\\frac{π}{6}$或$\\frac{5π}{6}$"],
+              correctAnswer: 2,
+              explanation: "$\\sin x = -\\frac{1}{2}$在$[0,2π]$上的解为$x=\\frac{7π}{6}$或$\\frac{11π}{6}$。"
+            },
+            {
+              question: "在$[-π,π]$范围内，与角$\\frac{5π}{3}$终边相同的角是 （ ）",
+              options: ["A. $\\frac{π}{3}$", "B. $\\frac{2π}{3}$", "C. $-\\frac{π}{3}$", "D. $-\\frac{2π}{3}$"],
+              correctAnswer: 2,
+              explanation: "$\\frac{5π}{3} - 2π = -\\frac{π}{3}$，在$[-π,π]$内。"
+            },
+            {
+              question: "已知$α$是第四象限角，则$α-π$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 1,
+              explanation: "第四象限角$α∈(-\\frac{π}{2}+2kπ, 2kπ)$，则$α-π∈(-\\frac{3π}{2}+2kπ, -π+2kπ)$，在第二象限。"
+            },
+            {
+              question: "若角$α=3\\text{ rad}$，则角$α$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 1,
+              explanation: "$3\\text{ rad}≈171.9°$，在第二象限。"
+            },
+            {
+              question: "已知一个扇形的半径为$r=\\frac{1}{2}$，圆心角$α=\\frac{π}{4}$，则这个扇形的弧长$l=$ （ ）",
+              options: ["A. $\\frac{π}{8}$", "B. $\\frac{π}{4}$", "C. $\\frac{π}{2}$", "D. $π$"],
+              correctAnswer: 0,
+              explanation: "$l = αr = \\frac{π}{4} × \\frac{1}{2} = \\frac{π}{8}$。"
+            },
+            {
+              question: "已知一个扇形的圆心角为$\\frac{π}{3}$，半径为$2$，则这个扇形的面积为 （ ）",
+              options: ["A. $\\frac{π}{3}$", "B. $\\frac{2π}{3}$", "C. $π$", "D. $\\frac{4π}{3}$"],
+              correctAnswer: 1,
+              explanation: "$S = \\frac{1}{2}αr^2 = \\frac{1}{2}×\\frac{π}{3}×4 = \\frac{2π}{3}$。"
+            },
+            {
+              question: "若角$α$的终边上有一点$P(-2,0)$，则$\\cos α$等于 （ ）",
+              options: ["A. $0$", "B. $1$", "C. $-1$", "D. $-\\frac{1}{2}$"],
+              correctAnswer: 2,
+              explanation: "$r=2$，$\\cos α = \\frac{-2}{2} = -1$。"
+            },
+            {
+              question: "$\\cos 495°=$ （ ）",
+              options: ["A. $1$", "B. $-\\frac{\\sqrt{2}}{2}$", "C. $\\frac{\\sqrt{2}}{2}$", "D. $-\\frac{\\sqrt{3}}{2}$"],
+              correctAnswer: 1,
+              explanation: "$\\cos 495° = \\cos(495°-360°) = \\cos135° = -\\frac{\\sqrt{2}}{2}$。"
+            },
+            {
+              question: "已知$\\cos α < 0$，则角$α$的大小可能是 （ ）",
+              options: ["A. $2$（弧度）", "B. $80°$", "C. $300°$", "D. $-\\frac{π}{4}$"],
+              correctAnswer: 0,
+              explanation: "$2\\text{ rad}≈114.6°$，在第二象限，$\\cos α<0$；$80°$在第一象限，$\\cos>0$；$300°$在第四象限，$\\cos>0$；$-\\frac{π}{4}$在第四象限，$\\cos>0$。"
+            },
+            {
+              question: "已知$α$是第三象限角，则点$P(\\tan α, \\sin α)$位于 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 3,
+              explanation: "第三象限角$\\tan α>0$，$\\sin α<0$，所以点$P$在第四象限。"
+            },
+            {
+              question: "已知$\\sin α\\cos α < 0$，则角$α$为第____象限角。 （ ）",
+              options: ["A. 一或三", "B. 二或四", "C. 二或三", "D. 三或四"],
+              correctAnswer: 1,
+              explanation: "$\\sin α\\cos α < 0$说明$\\sin α$与$\\cos α$异号，在二、四象限。"
+            },
+            {
+              question: "已知角$β$满足$390°<β<510°$，则角$\\frac{β}{2}$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 1,
+              explanation: "$390°<β<510°$ ⇒ $195°<\\frac{β}{2}<255°$，在第三象限。"
+            },
+            {
+              question: "若$π-α$是第四象限角，则$π+α$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 0,
+              explanation: "$π-α$是第四象限 ⇒ $-\\frac{π}{2}+2kπ<π-α<2kπ$ ⇒ $π-2kπ<α<\\frac{3π}{2}-2kπ$，取$k=0$得$π<α<\\frac{3π}{2}$，则$π+α∈(2π,\\frac{5π}{2})$，即第一象限。"
+            },
+            {
+              question: "若一个扇形的弧长与面积都是$6$，则这个扇形的圆心角的弧度数是 （ ）",
+              options: ["A. $1$", "B. $2$", "C. $3$", "D. $4$"],
+              correctAnswer: 2,
+              explanation: "$l=αr=6$，$S=\\frac{1}{2}αr^2=6$，解得$r=2$，$α=3$。"
+            },
+            {
+              question: "设扇形的圆心角为$θ$，若角$θ=2\\text{ rad}$，则下列不等式正确的是 （ ）",
+              options: ["A. $\\sin θ>0$", "B. $\\cos θ>0$", "C. $\\tan θ>0$", "D. $\\sin θ\\tan θ>0$"],
+              correctAnswer: 0,
+              explanation: "$2\\text{ rad}≈114.6°$，在第二象限，$\\sin θ>0$，$\\cos θ<0$，$\\tan θ<0$。"
+            },
+            {
+              question: "已知$\\sin α<0$且$\\tan α<0$，则角$α$的终边所在的象限为 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 3,
+              explanation: "$\\sin α<0$在三、四象限；$\\tan α<0$在二、四象限。所以$α$在第四象限。"
+            },
+            {
+              question: "若角$α$满足$\\tan α·\\sin α>0$，则$\\cos α$的值 （ ）",
+              options: ["A. 大于$0$", "B. 大于或等于$0$", "C. 小于$0$", "D. 小于或等于$0$"],
+              correctAnswer: 0,
+              explanation: "$\\tan α·\\sin α = \\frac{\\sin^2 α}{\\cos α}>0$ ⇒ $\\cos α>0$。"
+            },
+            {
+              question: "已知$\\cos α = -\\frac{5}{13}$，$α∈(π,\\frac{3π}{2})$，则$\\sin α=$ （ ）",
+              options: ["A. $-\\frac{12}{13}$", "B. $\\frac{12}{13}$", "C. $-\\frac{5}{13}$", "D. $\\frac{5}{13}$"],
+              correctAnswer: 0,
+              explanation: "$α$在第三象限，$\\sin α<0$，$\\sin α = -\\sqrt{1-\\cos^2 α} = -\\frac{12}{13}$。"
+            },
+            {
+              question: "若$\\sin θ·\\tan θ<0$，则$θ$所在的象限为 （ ）",
+              options: ["A. 第二或第三象限", "B. 第一或第四象限", "C. 第三或第四象限", "D. 第一或第二象限"],
+              correctAnswer: 0,
+              explanation: "$\\sin θ·\\tan θ = \\frac{\\sin^2 θ}{\\cos θ}<0$ ⇒ $\\cos θ<0$，所以$θ$在第二或第三象限。"
+            },
+            {
+              question: "已知$-α$是第四象限角，则$α$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 0,
+              explanation: "$-α$是第四象限，$α$与$-α$关于x轴对称，所以$α$是第一象限角。"
+            },
+            {
+              question: "在$0°$～$180°$之间与$-224°$角终边相同的角是 （ ）",
+              options: ["A. $24°$", "B. $34°$", "C. $146°$", "D. $136°$"],
+              correctAnswer: 3,
+              explanation: "$-224°+360°=136°$，在$0°$～$180°$之间。"
+            },
+            {
+              question: "半径为$1\\text{ cm}$，圆心角为$150°$的扇形的弧长为 （ ）",
+              options: ["A. $\\frac{5π}{6}\\text{ cm}$", "B. $\\frac{5π}{12}\\text{ cm}$", "C. $\\frac{π}{6}\\text{ cm}$", "D. $\\frac{π}{12}\\text{ cm}$"],
+              correctAnswer: 0,
+              explanation: "$150°=\\frac{5π}{6}$，$l=αr=\\frac{5π}{6}\\text{ cm}$。"
+            },
+            {
+              question: "在平面直角坐标系中，下列不等式一定成立的是 （ ）",
+              options: [
+                "A. $\\sin \\frac{7π}{6} < 0$",
+                "B. $\\sin \\frac{7π}{6} > 0$",
+                "C. $\\cos \\frac{7π}{6} < 0$",
+                "D. $\\cos \\frac{7π}{6} > 0$"
+              ],
+              correctAnswer: 2,
+              explanation: "$\\frac{7π}{6}$在第三象限，$\\sin<0$，$\\cos<0$。"
+            },
+            {
+              question: "已知$\\sin α = \\frac{3}{5}$，$α∈(\\frac{π}{2},π)$，则$\\tan α$等于 （ ）",
+              options: ["A. $-\\frac{3}{4}$", "B. $\\frac{3}{4}$", "C. $-\\frac{4}{3}$", "D. $\\frac{4}{3}$"],
+              correctAnswer: 0,
+              explanation: "$α$在第二象限，$\\cos α = -\\frac{4}{5}$，$\\tan α = -\\frac{3}{4}$。"
+            },
+            {
+              question: "设$α$是第三象限角，则点$P(\\sin α, \\tan α)$所在的象限是 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 1,
+              explanation: "第三象限角$\\sin α<0$，$\\tan α>0$，所以点$P$在第二象限。"
+            },
+            {
+              question: "若角$α$的终边过点$(\\sin 30°, -\\cos 30°)$，则$\\sin α$等于 （ ）",
+              options: ["A. $\\frac{1}{2}$", "B. $-\\frac{1}{2}$", "C. $-\\frac{\\sqrt{3}}{2}$", "D. $-\\frac{\\sqrt{3}}{3}$"],
+              correctAnswer: 2,
+              explanation: "点坐标为$(\\frac{1}{2}, -\\frac{\\sqrt{3}}{2})$，$r=1$，$\\sin α = -\\frac{\\sqrt{3}}{2}$。"
+            },
+            {
+              question: "函数$f(x)=\\cos x$，$x∈R$的值域为 （ ）",
+              options: [
+                "A. $[-1,1]$",
+                "B. $\\{-1,0,1\\}$",
+                "C. $\\{-1,-\\frac{1}{2},0,\\frac{1}{2},1\\}$",
+                "D. $\\{-1,0,\\frac{1}{2},1\\}$"
+              ],
+              correctAnswer: 0,
+              explanation: "..."
+            },
+            {
+              question: "在$△ABC$中，'$\\sin A=\\frac{\\sqrt{3}}{2}$'是'$∠A=\\frac{π}{3}$'的 （ ）",
+              options: [
+                "A. 充分不必要条件",
+                "B. 必要不充分条件",
+                "C. 充要条件",
+                "D. 既不充分也不必要条件"
+              ],
+              correctAnswer: 1,
+              explanation: "$\\sin A=\\frac{\\sqrt{3}}{2}$ ⇒ $A=\\frac{π}{3}$或$\\frac{2π}{3}$；反之，$A=\\frac{π}{3}$ ⇒ $\\sin A=\\frac{\\sqrt{3}}{2}$。"
+            },
+            {
+              question: "与$2021°$角的终边相同的角的集合为 （ ）",
+              options: [
+                "A. {$α|α=41°+k·360°,k∈Z$}",
+                "B. {$α|α=221°+k·360°,k∈Z$}",
+                "C. {$α|α=28°+k·360°,k∈Z$}",
+                "D. {$α|α=175°+k·360°,k∈Z$}"
+              ],
+              correctAnswer: 1,
+              explanation: "$2021°=221°+5×360°$。"
+            },
+            {
+              question: "在平面直角坐标系中，一个动点从点$A(1,0)$出发，沿单位圆（圆心在坐标原点，半径为1的圆）的圆周按逆时针方向运动$π$弧长，到达点$B$，则点$B$的坐标为 （ ）",
+              options: ["A. $(-1,0)$", "B. $(0,1)$", "C. $(0,-1)$", "D. $(1,0)$"],
+              correctAnswer: 0,
+              explanation: "从$(1,0)$逆时针转$π$弧长到$(-1,0)$。"
+            },
+            {
+              question: "已知角$14**°$的终边与$30°$的终边相同，则该角应该是 （ ）",
+              options: ["A. $1430°$", "B. $1450°$", "C. $1470°$", "D. $1490°$"],
+              correctAnswer: 2,
+              explanation: "$1470°=30°+4×360°$。"
+            },
+            {
+              question: "角$\\frac{16π}{3}$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 2,
+              explanation: "$\\frac{16π}{3}=4π+\\frac{4π}{3}$，$\\frac{4π}{3}$在第三象限。"
+            },
+            {
+              question: "下列各角终边与$560°$相同的是 （ ）",
+              options: ["A. $200°$", "B. $300°$", "C. $260°$", "D. $220°$"],
+              correctAnswer: 0,
+              explanation: "$560°=200°+360°$。"
+            },
+            {
+              question: "已知角$α=-2024°$，则$α$的终边落在 （ ）",
+              options: ["A. 第一象限", "B. 第二象限", "C. 第三象限", "D. 第四象限"],
+              correctAnswer: 1,
+              explanation: "$-2024°=136°-6×360°$，$136°$在第二象限。"
+            },
+            {
+              question: "已知角$α∈(\\frac{π}{2},π)$，且$\\sin α=\\frac{3}{5}$，则$\\tan α=$ （ ）",
+              options: ["A. $-\\frac{3}{4}$", "B. $\\frac{3}{4}$", "C. $-\\frac{4}{3}$", "D. $\\frac{4}{3}$"],
+              correctAnswer: 0,
+              explanation: "$α$在第二象限，$\\cos α=-\\frac{4}{5}$，$\\tan α=-\\frac{3}{4}$。"
+            },
+            {
+              question: "已知$A(\\sin^2 α, \\cos2α)$，$B(\\cos^2 α, -2\\cos^2 α)$两点，则线段$AB$的中点坐标是 （ ）",
+              options: ["A. $(1,1)$", "B. $(\\sin α, \\cos α)$", "C. $(\\frac{1}{2}, \\frac{1}{2})$", "D. $(\\frac{1}{2}, -\\frac{1}{2})$"],
+              correctAnswer: 3,
+              explanation: "中点横坐标$=\\frac{\\sin^2 α+\\cos^2 α}{2}=\\frac{1}{2}$，纵坐标$=\\frac{\\cos2α-2\\cos^2 α}{2}=\\frac{2\\cos^2 α-1-2\\cos^2 α}{2}=-\\frac{1}{2}$。"
+            },
+            {
+              question: "已知直线$l$的倾斜角为$α$，若$\\cos α=-\\frac{4}{5}$，则直线$l$的斜率为 （ ）",
+              options: ["A. $\\frac{3}{4}$", "B. $\\frac{4}{3}$", "C. $-\\frac{3}{4}$", "D. $-\\frac{4}{3}$"],
+              correctAnswer: 2,
+              explanation: "$\\cos α=-\\frac{4}{5}$，$α$在第二象限，$\\sin α=\\frac{3}{5}$，$\\tan α=-\\frac{3}{4}$。"
+            },
+            {
+              question: "要得到函数$y=\\sin x$的图像，可以将函数$f(x)=\\sin(x+\\frac{π}{4})$的图像 （ ）",
+              options: [
+                "A. 向左平移$\\frac{π}{4}$个单位长度",
+                "B. 向右平移$\\frac{π}{4}$个单位长度",
+                "C. 向左平移$\\frac{π}{2}$个单位长度",
+                "D. 向右平移$\\frac{π}{2}$个单位长度"
+              ],
+              correctAnswer: 1,
+              explanation: "$\\sin x = \\sin[(x-\\frac{π}{4})+\\frac{π}{4}]$，所以向右平移$\\frac{π}{4}$个单位。"
+            },
+            {
+              question: "已知角$α$的终边经过点$(2,-\\sqrt{3})$，则$\\cos(π+α)$的值是 （ ）",
+              options: ["A. $-\\frac{2}{\\sqrt{7}}$", "B. $-\\frac{\\sqrt{3}}{\\sqrt{7}}$", "C. $\\frac{2}{\\sqrt{7}}$", "D. $\\frac{\\sqrt{3}}{\\sqrt{7}}$"],
+              correctAnswer: 0,
+              explanation: "$r=\\sqrt{2^2+(-\\sqrt{3})^2}=\\sqrt{7}$，$\\cos α=\\frac{2}{\\sqrt{7}}$，$\\cos(π+α)=-\\cos α=-\\frac{2}{\\sqrt{7}}$。"
+            },
+            {
+              question: "已知角$α$的终边经过点$(3,-4)$，则$\\cos(3π+α)$的值是 （ ）",
+              options: ["A. $\\frac{3}{5}$", "B. $-\\frac{3}{5}$", "C. $-\\frac{4}{5}$", "D. $\\frac{4}{5}$"],
+              correctAnswer: 1,
+              explanation: "$r=5$，$\\cos α=\\frac{3}{5}$，$\\cos(3π+α)=\\cos(π+α)=-\\cos α=-\\frac{3}{5}$。"
+            },
+            {
+              question: "$\\sin(-\\frac{19π}{6})$等于 （ ）",
+              options: ["A. $-\\frac{1}{2}$", "B. $\\frac{1}{2}$", "C. $\\frac{\\sqrt{3}}{2}$", "D. $-\\frac{\\sqrt{3}}{2}$"],
+              correctAnswer: 1,
+              explanation: "$\\sin(-\\frac{19π}{6}) = -\\sin(\\frac{19π}{6}) = -\\sin(\\frac{7π}{6}) = -(-\\frac{1}{2}) = \\frac{1}{2}$。"
+            },
+            {
+              question: "若$\\sin α·|\\sin α|+\\cos α·|\\cos α|=-1$，且$α$是象限角，则角$α$是 （ ）",
+              options: ["A. 第一象限角", "B. 第二象限角", "C. 第三象限角", "D. 第四象限角"],
+              correctAnswer: 2,
+              explanation: "当$α$在第三象限时，$\\sin α<0$，$\\cos α<0$，原式$=\\sin α·(-\\sin α)+\\cos α·(-\\cos α)=-\\sin^2 α-\\cos^2 α=-1$。"
+            },
+            {
+              question: "已知角$α$是第四象限角，则角$\\frac{α}{2}$是 （ ）",
+              options: ["A. 第一或第二象限角", "B. 第二或第三象限角", "C. 第一或第三象限角", "D. 第二或第四象限角"],
+              correctAnswer: 3,
+              explanation: "第四象限角$α∈(-\\frac{π}{2}+2kπ, 2kπ)$，则$\\frac{α}{2}∈(-\\frac{π}{4}+kπ, kπ)$，当$k$为偶数时在第四象限，$k$为奇数时在第二象限。"
+            },
+            {
+              question: "若$\\cos α$与$\\tan α$异号，则角$α$是 （ ）",
+              options: ["A. 第一或第三象限角", "B. 第二或第四象限角", "C. 第二或第三象限角", "D. 第三或第四象限角"],
+              correctAnswer: 3,
+              explanation: "$\\cos α$与$\\tan α$异号，即$\\cos α·\\tan α=\\sin α<0$，且$\\cos α$与$\\tan α$异号，所以$α$在第三或第四象限。"
+            },
+            {
+              question: "已知$\\cos α = -\\frac{12}{13}$，$\\tan α = \\frac{5}{12}$，则$\\sin α$等于 （ ）",
+              options: ["A. $-\\frac{5}{13}$", "B. $\\frac{5}{13}$", "C. $\\frac{12}{13}$", "D. $-\\frac{12}{13}$"],
+              correctAnswer: 0,
+              explanation: "$\\sin α = \\tan α·\\cos α = \\frac{5}{12}×(-\\frac{12}{13}) = -\\frac{5}{13}$。"
+            },
+            {
+              question: "已知$\\frac{\\sin θ+2\\cos θ}{\\sin θ-\\cos θ}=2$，则$\\tan θ$的值为 （ ）",
+              options: ["A. $-4$", "B. $-2$", "C. $2$", "D. $4$"],
+              correctAnswer: 3,
+              explanation: "$\\sin θ+2\\cos θ = 2\\sin θ-2\\cos θ$ ⇒ $\\sin θ = 4\\cos θ$ ⇒ $\\tan θ=4$。"
+            },
+            {
+              question: "已知$△ABC$的内角为$A,B,C$，且$\\sin A·\\cos B·\\sin C<0$，则该三角形为 （ ）",
+              options: ["A. 锐角三角形", "B. 直角三角形", "C. 钝角三角形", "D. 等腰直角三角形"],
+              correctAnswer: 2,
+              explanation: "$\\sin A>0$，$\\sin C>0$，所以$\\cos B<0$，即$B$为钝角。"
+            },
+            {
+              question: "已知$\\sin α = \\frac{1}{3}$，则$\\sin(π-α)+\\cos(\\frac{π}{2}-α)=$ （ ）",
+              options: ["A. $\\frac{2}{3}$", "B. $\\frac{4}{3}$", "C. $\\frac{5}{3}$", "D. $\\frac{7}{3}$"],
+              correctAnswer: 1,
+              explanation: "$\\sin(π-α)+\\cos(\\frac{π}{2}-α) = \\sin α+\\sin α = 2\\sin α = \\frac{2}{3}$。"
+            },
+            {
+              question: "已知角$α$的终边经过点$(1,-2)$，则$\\frac{\\sin α+\\cos α}{\\sin α-\\cos α}=$ （ ）",
+              options: ["A. $-\\frac{1}{3}$", "B. $\\frac{1}{3}$", "C. $-2$", "D. $2$"],
+              correctAnswer: 0,
+              explanation: "$\\sin α = \\frac{-2}{\\sqrt{5}}$，$\\cos α = \\frac{1}{\\sqrt{5}}$，原式$=\\frac{-\\frac{1}{\\sqrt{5}}}{-\\frac{3}{\\sqrt{5}}}=\\frac{1}{3}$。"
+            },
+            {
+              question: "已知角$α$的顶点为坐标原点，始边与$x$轴的非负半轴重合，终边上有两点$A(1,a)$，$B(2,b)$，且$\\sin α=\\frac{2}{\\sqrt{5}}$，则$|b-a|$等于 （ ）",
+              options: ["A. $\\frac{1}{5}$", "B. $\\frac{2}{5}$", "C. $2$", "D. $\\frac{8}{5}$"],
+              correctAnswer: 3,
+              explanation: "由$\\sin α=\\frac{2}{\\sqrt{5}}$，$\\tan α=2$，所以$b-a=2(2-1)=2$。"
+            },
+            {
+              question: "角$α$的始边在$x$轴非负半轴上，终边与直线$3x+4y+5=0$平行，则$\\tan α=$ （ ）",
+              options: ["A. $-\\frac{3}{4}$", "B. $\\frac{3}{4}$", "C. $\\frac{4}{3}$", "D. $-\\frac{4}{3}$"],
+              correctAnswer: 0,
+              explanation: "直线斜率$k=-\\frac{3}{4}$，所以$\\tan α=-\\frac{3}{4}$。"
+            },
+            {
+                question: "不等式$|2x+1|-5<0$的解集为（ ）",
+                options: ["$\\{x|x<-3或x>2\\}$", "$\\{x|-3<x<2\\}$", "$\\{x|x<2\\}$", "$\\{x|2<x<3\\}$"],
+                correctAnswer: 1,
+                explanation: "$|2x+1|-5<0$ ⇒ $|2x+1|<5$ ⇒ $-5<2x+1<5$ ⇒ $-6<2x<4$ ⇒ $-3<x<2$。"
+            },
+            {
+                question: "不等式$x^2<4$的解集为（ ）",
+                options: ["$x<-2或x>2$", "$\\{x|x>±2\\}$", "$\\{x|x<-2或x>2\\}$", "$\\{x|-2<x<2\\}$"],
+                correctAnswer: 3,
+                explanation: "$x^2<4$ ⇒ $x^2-4<0$ ⇒ $(x-2)(x+2)<0$ ⇒ $-2<x<2$。"
+            },
+            {
+                question: "不等式$-x^2+2x≥0$的解集为（ ）",
+                options: ["$[0,2]$", "$(-∞,0]∪[2,+∞)$", "$(-∞,2]$", "$(-∞,0)∪(2,+∞)$"],
+                correctAnswer: 0,
+                explanation: "$-x^2+2x≥0$ ⇒ $x^2-2x≤0$ ⇒ $x(x-2)≤0$ ⇒ $0≤x≤2$。"
+            },
+            {
+                question: "与不等式$(x-3)(x+2)≤0$同解的不等式（组）为（ ）",
+                options: ["$\\frac{x-3}{x+2}≤0$", "$\\frac{x+2}{x-3}≤0$", "$\\begin{cases} x-3≤0 \\\\ x+2≥0 \\end{cases}$", "$\\begin{cases} x-3≥0 \\\\ x+2≤0 \\end{cases}$"],
+                correctAnswer: 2,
+                explanation: "$(x-3)(x+2)≤0$的解为$-2≤x≤3$，对应选项C的联立不等式。"
+            },
+            {
+                question: "若$a∈[-3,6]$，则$-\\frac{a}{3}$的取值范围是（ ）",
+                options: ["$[-1,2]$", "$[1,2]$", "$[-2,-1]$", "$[-2,1]$"],
+                correctAnswer: 3,
+                explanation: "$a∈[-3,6]$，则$-a∈[-6,3]$，$-\\frac{a}{3}∈[-2,1]$。"
+            },
+            {
+                question: "已知三角形的三边分别为$a,b,c$，下列不等式关系错误的是（ ）",
+                options: ["$a+b>c$", "$a<b+c$", "$c-b<a$", "$(a+b-c)(b+c-a)<0$"],
+                correctAnswer: 3,
+                explanation: "三角形两边之和大于第三边，所以$a+b-c>0$，$b+c-a>0$，乘积大于0。"
+            },
+            {
+                question: "已知$a>b$，$c<d$，下列不等式一定成立的是（ ）",
+                options: ["$a+b>b+d$", "$ac>bd$", "$a-c>b-d$", "$a-d>b-c$"],
+                correctAnswer: 3,
+                explanation: "由$c<d$得$-c>-d$，结合$a>b$，相加得$a-c>b-d$，但选项C是$a-c>b-d$，而选项D是$a-d>b-c$，等价于$a-c>b-d$，故D正确。"
+            },
+            {
+                question: "设$a,b,c,d$为实数，且$a>b>0>c>d$，则下列不等式正确的是（ ）",
+                options: ["$a-c<b-d$", "$c^2<cd$", "$\\frac{c}{d}-\\frac{a}{b}<0$", "$ac<bd$"],
+                correctAnswer: 1,
+                explanation: "由$0>c>d$，同乘$c$得$c^2<cd$（因为$c$为负，不等号方向改变）。"
+            },
+            {
+                question: "用配方法解一元二次方程$x^2+x-1=0$时，配方结果正确的是（ ）",
+                options: ["$(x+1)^2=2$", "$\\left(x+\\frac{1}{2}\\right)^2=1$", "$\\left(x+\\frac{1}{2}\\right)^2=\\frac{5}{4}$", "$\\left(x+\\frac{1}{2}\\right)^2=\\frac{3}{4}$"],
+                correctAnswer: 2,
+                explanation: "$x^2+x-1=0$ ⇒ $x^2+x=1$ ⇒ $x^2+x+\\frac{1}{4}=1+\\frac{1}{4}$ ⇒ $\\left(x+\\frac{1}{2}\\right)^2=\\frac{5}{4}$。"
+            },
+            {
+                question: "集合$\\{x|x<2且x≠0\\}$用区间表示为（ ）",
+                options: ["$(-∞,2)$", "$(-∞,2)$且$x≠0$", "$(0,2)$", "$(-∞,0)∪(0,2)$"],
+                correctAnswer: 3,
+                explanation: "小于2且不等于0的实数集，即$(-∞,0)∪(0,2)$。"
+            },
+            {
+                question: "不等式$5-x>0$的解集用区间表示为（ ）",
+                options: ["$(-5,+∞)$", "$(-∞,-5)$", "$(5,+∞)$", "$(-∞,5)$"],
+                correctAnswer: 3,
+                explanation: "$5-x>0$ ⇒ $x<5$，即$(-∞,5)$。"
+            },
+            {
+                question: "若$a>b>0$，则下列不等式中成立的是（ ）",
+                options: ["$\\frac{1}{a}>\\frac{1}{b}$", "$a^2<b^2$", "$\\sqrt{a}<\\sqrt{b}$", "$|a|>|b|$"],
+                correctAnswer: 3,
+                explanation: "$a>b>0$，则$|a|=a>|b|=b$。"
+            },
+            {
+                question: "已知$0<b<a$，$a+b=2$，则（ ）",
+                options: ["$0<a<1$", "$1<b<2$", "$0<a-b<2$", "$ab>a^2$"],
+                correctAnswer: 2,
+                explanation: "由$a+b=2$且$a>b>0$，得$a>1$，$b<1$，$a-b>0$且$a-b<2$（因为$b>0$）。"
+            },
+            {
+                question: "不等式$|x-2|≤-3$的解集为（ ）",
+                options: ["$∅$", "$R$", "$[1,5]$", "$[-1,5]$"],
+                correctAnswer: 0,
+                explanation: "绝对值非负，不可能小于等于负数，故解集为空集。"
+            },
+            {
+                question: "已知$a,m,n$均为实数，下列结论正确的是（ ）",
+                options: ["若$ma≥na$，则$m≥n$", "若$m≥n$，则$m-a≥n-a$", "若$m^2≥n^2$，则$m≥n$", "若$ma≥na$，则$-m≥-n$"],
+                correctAnswer: 1,
+                explanation: "不等式两边同时减去同一个数，不等号方向不变。"
+            },
+            {
+                question: "设$x$是任意的实数，则$x^2+1$与$2x$的大小关系是（ ）",
+                options: ["$x^2+1>2x$", "$x^2+1≥2x$", "$x^2+1<2x$", "$x^2+1≤2x$"],
+                correctAnswer: 1,
+                explanation: "$x^2+1-2x=(x-1)^2≥0$，所以$x^2+1≥2x$。"
+            },
+            {
+                question: "已知$a<b$，下列不等式恒成立的是（ ）",
+                options: ["$ac<bc$", "$a^2<b^2$", "$a-c<b-c$", "$\\frac{a}{b}<1$"],
+                correctAnswer: 2,
+                explanation: "不等式两边同时减去同一个数，不等号方向不变。"
+            },
+            {
+                question: "若$a<b<c$，则（ ）",
+                options: ["$b<c-a$", "$a^2<b^2<c^2$", "$a+b-2c<0$", "$0.2^a<0.2^b<0.2^c$"],
+                correctAnswer: 2,
+                explanation: "由$a<c$且$b<c$，得$a+b<2c$，即$a+b-2c<0$。"
+            },
+            {
+                question: "设实数$a>b>c$，则下列关系恒成立的是（ ）",
+                options: ["$a^2>b^2$", "$\\ln a>\\ln b$", "$2025^a>2025^b$", "$ac>bc$"],
+                correctAnswer: 2,
+                explanation: "指数函数$y=2025^x$单调递增，由$a>b$得$2025^a>2025^b$。"
+            },
+            {
+                question: "不等式$|x-1|<2$的整数解集为（ ）",
+                options: ["$\\{x|-1<x<3\\}$", "$(0,2)$", "$\\{0,1,2\\}$", "$\\{-1,0,1,2,3\\}$"],
+                correctAnswer: 2,
+                explanation: "$|x-1|<2$ ⇒ $-2<x-1<2$ ⇒ $-1<x<3$，整数解为$0,1,2$。"
+            },
+            {
+                question: "李老师家到学校的路程是3500m，李老师每天早上7：00离家步行去上班，在7：40（含7：40）～7：50（含7：50）到达学校．设李老师步行的速度为$x$（m/min），则实数$x$的取值范围是（ ）",
+                options: ["$\\{x|70≤x≤87.5\\}$", "$\\{x|x≤70\\}$", "$\\{x|x≤70或x≥87.5\\}$", "$\\{x|x≥87.5\\}$"],
+                correctAnswer: 0,
+                explanation: "时间在40到50分钟之间，速度=路程/时间，故$\\frac{3500}{50}≤x≤\\frac{3500}{40}$，即$70≤x≤87.5$。"
+            },
+            {
+                question: "下列不等式中，解集为$(-2,1)$的是（ ）",
+                options: ["$(x-2)(x+1)<0$", "$(x-2)(x+1)>0$", "$(x+2)(x-1)>0$", "$(x+2)(x-1)<0$"],
+                correctAnswer: 3,
+                explanation: "$(x+2)(x-1)<0$ ⇒ $-2<x<1$。"
+            },
+            {
+                question: "不等式$1-|3-2x|>0$的解集为（ ）",
+                options: ["$(-2,2)$", "$(2,3)$", "$(1,2)$", "$(3,4)$"],
+                correctAnswer: 2,
+                explanation: "$1-|3-2x|>0$ ⇒ $|3-2x|<1$ ⇒ $-1<3-2x<1$ ⇒ $-4<-2x<-2$ ⇒ $1<x<2$。"
+            },
+            {
+                question: "不等式$|x+5|≤0$的解集是（ ）",
+                options: ["$R$", "$∅$", "$\\{-5\\}$", "$(-∞,-5)∪(-5,+∞)$"],
+                correctAnswer: 2,
+                explanation: "绝对值小于等于0，只有$x+5=0$，即$x=-5$。"
+            },
+            {
+                question: "不等式$|x-1|>-1$的解集为（ ）",
+                options: ["$R$", "$∅$", "$(-∞,-1)$", "$(0,4)$"],
+                correctAnswer: 0,
+                explanation: "绝对值恒大于等于0，大于-1恒成立，故解集为$R$。"
+            },
+            {
+                question: "不等式$x^2+5x≤0$的解集为（ ）",
+                options: ["$[-5,0]$", "$(-5,0)$", "$[-4,0)∪(0,5]$", "$(-∞,-5]∪(0,+∞)$"],
+                correctAnswer: 0,
+                explanation: "$x(x+5)≤0$ ⇒ $-5≤x≤0$。"
+            },
+            {
+                question: "一元二次不等式$x-12<-x^2$的解集为（ ）",
+                options: ["$(-4,3)$", "$(3,4)$", "$(-∞,-4)∪(3,+∞)$", "$(-∞,-3)∪(4,+∞)$"],
+                correctAnswer: 0,
+                explanation: "$x^2+x-12<0$ ⇒ $(x+4)(x-3)<0$ ⇒ $-4<x<3$。"
+            },
+            {
+                question: "一元二次不等式$x^2+14x+49>0$的解集为（ ）",
+                options: ["$R$", "$\\{x|x≠-7\\}$", "$\\{x|x≠7\\}$", "$\\{x|x<-7或x>7\\}$"],
+                correctAnswer: 1,
+                explanation: "$(x+7)^2>0$ ⇒ $x≠-7$。"
+            },
+            {
+                question: "不等式$3x-\\frac{1}{2}<x+\\frac{1}{3}$的最大整数解为（ ）",
+                options: ["$-1$", "$0$", "$1$", "不存在"],
+                correctAnswer: 1,
+                explanation: "$3x-x<\\frac{1}{3}+\\frac{1}{2}$ ⇒ $2x<\\frac{5}{6}$ ⇒ $x<\\frac{5}{12}$，最大整数为$0$。"
+            },
+            {
+                question: "不等式$\\frac{2x-1}{3}≥2$的解集为（ ）",
+                options: ["$\\{x|x≥1\\}$", "$\\{x|x≥\\frac{7}{2}\\}$", "$\\{x|x≤\\frac{7}{2}\\}$", "$\\{x|x≥\\frac{5}{2}\\}$"],
+                correctAnswer: 1,
+                explanation: "$\\frac{2x-1}{3}≥2$，解得$x≥\\frac{7}{2}$。"
+            },
+            {
+                question: "不等式$1≤7-3x≤4$的解集是（ ）",
+                options: ["$[1,2]$", "$(1,2)$", "$(-1,2)$", "$[-1,2)$"],
+                correctAnswer: 0,
+                explanation: "$1≤7-3x≤4$ ⇒ $-6≤-3x≤-3$ ⇒ $2≥x≥1$，即$[1,2]$。"
+            },
+            {
+                question: "下列说法中，错误的是（ ）",
+                options: ["若$a^2>b^2$，$ab>0$，则$\\frac{1}{a}<\\frac{1}{b}$", "若$\\frac{1}{a}<\\frac{1}{b}$，则$a<b$", "若$b>a>0$，$m>0$，则$\\frac{a+m}{b+m}>\\frac{a}{b}$", "若$a>b$，$c<d$，则$a-c>b-d$"],
+                correctAnswer: 0,
+                explanation: "A：例如$a=-3,b=-2$，$a^2>b^2$，但$\\frac{1}{a}>\\frac{1}{b}$，错误。"
+            },
+            {
+                question: "已知$a>b>c>0$，则下列说法一定正确的是（ ）",
+                options: ["$a>b+c$", "$a^2<bc$", "$ac>b^2$", "$ab+bc>b^2+ac$"],
+                correctAnswer: 3,
+                explanation: "$ab+bc-(b^2+ac)=b(a-b)-c(a-b)=(a-b)(b-c)>0$，故$ab+bc>b^2+ac$。"
+            },
+            {
+                question: "设$0<a<b<1$，则下列不等式成立的是（ ）",
+                options: ["$a^3>b^3$", "$\\frac{1}{a}<\\frac{1}{b}$", "$a^b>1$", "$a^2<b^2$"],
+                correctAnswer: 3,
+                explanation: "$0<a<b<1$，平方函数单调递增，故$a^2<b^2$。"
+            },
+            {
+                question: "若$x∈R$，则下列不等式一定成立的是（ ）",
+                options: ["$\\frac{1}{x}<\\frac{1}{x+1}$", "$5-x>2-x$", "$x^2>0$", "$(x+1)^2>x^2+x+1$"],
+                correctAnswer: 1,
+                explanation: "$5-x>2-x$ ⇒ $5>2$恒成立。"
+            },
+            {
+                question: "已知$a+b>0$，$b<0$，则（ ）",
+                options: ["$a>b>-b>-a$", "$a>-b>-a>b$", "$a>-b>b>-a$", "$a>b>-a>-b$"],
+                correctAnswer: 2,
+                explanation: "由$b<0$，$a+b>0$得$a>-b>0$，且$a>|b|$，所以$a>-b>0>b>-a$。"
+            },
+            {
+                question: "已知实数$a>b>c$，下列结论正确的是（ ）",
+                options: ["$a+b<2c$", "$a+b>2c$", "$a+c>2b$", "$a+c<2b$"],
+                correctAnswer: 1,
+                explanation: "由$a>c$且$b>c$，相加得$a+b>2c$。"
+            },
+            {
+                question: "已知集合$M=\\{x|x^2-2x-3<0\\}$，$N=\\{x|x^2+x+1>0\\}$，则$M∩N$等于（ ）",
+                options: ["$(-3,1)$", "$R$", "$(-1,3)$", "$∅$"],
+                correctAnswer: 2,
+                explanation: "$M=\\{x|-1<x<3\\}$，$N=R$（因为判别式小于0，开口向上，恒正），故$M∩N=(-1,3)$。"
+            },
+            {
+                question: "不等式$-x^2+x+6<0$的解集是（ ）",
+                options: ["$\\{x|x>3\\}$", "$\\{x|x<-2\\}$", "$\\{x|x<-2或x>3\\}$", "$\\{x|-2<x<3\\}$"],
+                correctAnswer: 2,
+                explanation: "$-x^2+x+6<0$ ⇒ $x^2-x-6>0$ ⇒ $(x-3)(x+2)>0$ ⇒ $x<-2$或$x>3$。"
+            },
+            {
+                question: "下列结论不正确的是（ ）",
+                options: ["$|x-1|>-3$的解集为$R$", "$|2x-1|<-5$的解集为$∅$", "$|3x-2|>0$的解集为$R$", "$|2x-6|≤0$的解集为$\\{3\\}$"],
+                correctAnswer: 2,
+                explanation: "$|3x-2|>0$的解集为$x≠\\frac{2}{3}$，不是$R$。"
+            },
+            {
+                question: "下列不等式中，解集为$(-1,2)$的是（ ）",
+                options: ["$(x-1)(x+2)<0$", "$(x-1)(x+2)>0$", "$(x+1)(x-2)>0$", "$(x+1)(x-2)<0$"],
+                correctAnswer: 3,
+                explanation: "$(x+1)(x-2)<0$ ⇒ $-1<x<2$。"
+            },
+            {
+                question: "若$a-b<0$，则下列关系式中一定正确的是（ ）",
+                options: ["$a>b$", "$ab>0$", "$\\frac{a}{b}<0$", "$-a>-b$"],
+                correctAnswer: 3,
+                explanation: "$a-b<0$ ⇒ $a<b$ ⇒ $-a>-b$。"
+            },
+            {
+                question: "已知$a<b$，下列不等式成立的是（ ）",
+                options: ["$a+b<0$", "$a-1<b+1$", "$\\frac{1}{a}>\\frac{1}{b}$", "$-3a<-3b$"],
+                correctAnswer: 1,
+                explanation: "$a<b$，两边同时加$(-1)$得$a-1<b-1$，又$b-1<b+1$，所以$a-1<b+1$。"
+            },
+            {
+                question: "下列命题中，正确的是（ ）",
+                options: ["若$a>b$，则$ac^2>bc^2$", "若$a+b>a$，则$b>0$", "若$ac>bc$，$c<0$，则$a>b$", "若$ab>0$，则$a>0$且$b>0$"],
+                correctAnswer: 1,
+                explanation: "A：$c=0$时不成立；B：$a+b>a$ ⇒ $b>0$；C：$c<0$，$ac>bc$ ⇒ $a<b$；D：$a,b$同号即可。"
+            },
+            {
+                question: "已知$p<q<0$，下列不等式错误的是（ ）",
+                options: ["$pq>0$", "$\\frac{p}{q}>\\frac{q}{p}$", "$\\frac{p}{q}>1$", "$\\frac{q}{p}>1$"],
+                correctAnswer: 3,
+                explanation: "$p<q<0$，则$\\frac{p}{q}>1$（因为$p,q$同号，且$|p|>|q|$）。但$\\frac{p}{q}$应为正数且大于1？实际上$p<q<0$，则$\\frac{p}{q}>1$（例如$p=-2,q=-1$，$\\frac{p}{q}=2>1$），所以C正确。选项D：$\\frac{q}{p}<1$，故D错误。"
+            },
+            {
+                question: "已知$a>b$，且$c≠0$，下列不等式恒成立的是（ ）",
+                options: ["$a^2>b^2$", "$\\frac{a}{c}>\\frac{b}{c}$", "$ac>bc$", "$\\frac{a}{c^2}>\\frac{b}{c^2}$"],
+                correctAnswer: 3,
+                explanation: "$c^2>0$，不等式两边同除正数，不等号方向不变。"
+            },
+            {
+                question: "不等式$|5-2x|≤7$的解集是（ ）",
+                options: ["$[-6,1]$", "$[-1,6]$", "$(-∞,-6]∪[1,+∞)$", "$(-∞,-1]∪[6,+∞)$"],
+                correctAnswer: 1,
+                explanation: "$|5-2x|≤7$ ⇒ $-7≤5-2x≤7$ ⇒ $-12≤-2x≤2$ ⇒ $-1≤x≤6$。"
+            },
+            {
+                question: "已知$a,b,c$均为实数，下列说法正确的是（ ）",
+                options: ["若$a>b$，则$\\frac{1}{a}<\\frac{1}{b}$", "若$a>b$，则$ac^2>bc^2$", "若$a>0>b$，则$a^2<ab$", "若$c>a>b>0$，则$\\frac{c-a}{c-b}>\\frac{a}{b}$"],
+                correctAnswer: 3,
+                explanation: "D：$\\frac{c-a}{c-b}-\\frac{a}{b}=\\frac{b(c-a)-a(c-b)}{b(c-b)}=\\frac{bc-ab-ac+ab}{b(c-b)}=\\frac{c(b-a)}{b(c-b)}>0$，因为$b-a<0$，$c-b>0$，$b>0$，$c>0$，分子分母负负得正。"
+            },
+            {
+                question: "不等式$|5-3x|≤7$的解集为（ ）",
+                options: ["$(-∞,4]$", "$[-\\frac{2}{3},4]$", "$[-4,4]$", "$(-∞,-\\frac{2}{3}]∪[4,+∞)$"],
+                correctAnswer: 1,
+                explanation: "$|5-3x|≤7$ ⇒ $-7≤5-3x≤7$ ⇒ $-12≤-3x≤2$ ⇒ $-\\frac{2}{3}≤x≤4$。"
+            },
+            {
+                question: "已知$ac^2>bc^2$，下列不等式成立的是（ ）",
+                options: ["$\\frac{1}{a}<\\frac{1}{b}$", "$ac>bc$", "$c-a>c-b$", "$a>b$"],
+                correctAnswer: 3,
+                explanation: "$ac^2>bc^2$ ⇒ $c^2>0$，故$a>b$。"
+            },
+            {
+                question: "若$a>b>c>d$，则下列不等式中恒成立的是（ ）",
+                options: ["$a+d>b+c$", "$a+c>b+d$", "$ac>bd$", "$ad>bc$"],
+                correctAnswer: 1,
+                explanation: "由$a>b$且$c>d$，相加得$a+c>b+d$。"
+            },
+            {
+                question: "下列不等式中，解集为$R$的是（ ）",
+                options: ["$x^2-2x+1>0$", "$x^2+2x+1≥0$", "$x^2-2x+1<0$", "$x^2+2x+1≤0$"],
+                correctAnswer: 1,
+                explanation: "$x^2+2x+1=(x+1)^2≥0$，解集为$R$。"
+            },
+            {
+                question: "若$\\frac{1}{a}<\\frac{1}{b}<0$，则下列不等式中正确的是（ ）",
+                options: ["$a<b<0$", "$b<a<0$", "$a<0<b$", "$b<0<a$"],
+                correctAnswer: 1,
+                explanation: "$\\frac{1}{a}<\\frac{1}{b}<0$ ⇒ $a,b$同号且均为负，且$|a|>|b|$，所以$b<a<0$。"
+            },
+            {
+                question: "下列结论正确的是（ ）",
+                options: ["若$a>b$，则$ac>bc$", "若$a>b$，则$ac^2>bc^2$", "若$ac^2>bc^2$，则$a>b$", "若$a>b$，则$a^2>b^2$"],
+                correctAnswer: 2,
+                explanation: "$ac^2>bc^2$ ⇒ $c^2>0$，故$a>b$。"
+            },
+            {
+                question: "已知不等式$x^2-2x-3<0$，则该不等式的解集是（ ）",
+                options: ["$R$", "$(-1,3)$", "$(-∞,-1)∪(3,+∞)$", "$∅$"],
+                correctAnswer: 1,
+                explanation: "$(x-3)(x+1)<0$ ⇒ $-1<x<3$。"
+            },
+            {
+                question: "若实数$a,b$满足$a<b<0$，则下列命题中正确的是（ ）",
+                options: ["$\\frac{1}{a}<\\frac{1}{b}$", "$\\frac{a}{b}>1$", "$a^2<b^2$", "$|a|<|b|$"],
+                correctAnswer: 1,
+                explanation: "$a<b<0$，则$\\frac{a}{b}>1$（同号相除得正，且$|a|>|b|$）。"
+            },
+            {
+                question: "下列命题中正确的是（ ）",
+                options: ["若$a>b$，则$ac^2>bc^2$", "若$\\frac{a}{c^2}>\\frac{b}{c^2}$，则$a>b$", "若$a^2>b^2$，则$a>b$", "若$|a|>|b|$，则$a>b$"],
+                correctAnswer: 1,
+                explanation: "$\\frac{a}{c^2}>\\frac{b}{c^2}$ ⇒ $c^2>0$，故$a>b$。"
+            },
+            {
+                question: "不等式$x^2-4x-5<0$的解集为（ ）",
+                options: ["$(-1,5)$", "$(2,5)$", "$(-∞,5)$", "$(-∞,-1)$"],
+                correctAnswer: 0,
+                explanation: "$(x-5)(x+1)<0$ ⇒ $-1<x<5$。"
+            },
+            {
+                question: "不等式$\\frac{x-1}{x-2}>0$的解集为（ ）",
+                options: ["$R$", "$∅$", "$(-∞,-1)∪(2,+∞)$", "$(-1,2)$"],
+                correctAnswer: 2,
+                explanation: "$\\frac{x-1}{x-2}>0$ ⇒ $(x-1)(x-2)>0$且$x≠2$ ⇒ $x<1$或$x>2$。"
+            },
+            {
+                question: "不等式$x^2-7x+12≥0$的解集为（ ）",
+                options: ["$\\{x|3<x<4\\}$", "$\\{x|-2≤x≤6\\}$", "$\\{x|3≤x≤4\\}$", "$\\{x|x≤3或x≥4\\}$"],
+                correctAnswer: 3,
+                explanation: "$(x-3)(x-4)≥0$ ⇒ $x≤3$或$x≥4$。"
+            },
+            {
+                question: "已知实数$m>n$，则下列结论正确的是（ ）",
+                options: ["$mn<m^2$", "$-m>-n$", "$m^2>n^2$", "$m+k>n+k$"],
+                correctAnswer: 3,
+                explanation: "不等式两边同时加同一个数，不等号方向不变。"
+            },
+            {
+                question: "设实数$a,b,c∈R$，则下列选项一定正确的是（ ）",
+                options: ["若$a>b$，则$ac>bc$", "若$a>b$，则$\\log_c a>\\log_c b$", "若$a>b$，则$a-c>b-c$", "若$a>b$，则$|a|>|b|$"],
+                correctAnswer: 2,
+                explanation: "不等式两边同时减去同一个数，不等号方向不变。"
+            },
+            {
+                question: "已知$\\frac{1}{a}>b$，则下列不等式成立的是（ ）",
+                options: ["$ab>1$", "$ab<1$", "$a(1-ab)<0$", "$a(1-ab)>0$"],
+                correctAnswer: 3,
+                explanation: "$\\frac{1}{a}>b$ ⇒ $\\frac{1}{a}-b>0$ ⇒ $\\frac{1-ab}{a}>0$ ⇒ $a(1-ab)>0$。"
+            },
+            {
+                question: "下列命题正确的是（ ）",
+                options: ["若$\\frac{1}{x}<1$，则$x>1$", "若$a>b$，则$\\left(\\frac{1}{2}\\right)^a>\\left(\\frac{1}{2}\\right)^b$", "若$a>b$，则$\\lg a>\\lg b$", "若$ac^2>bc^2$，则$a>b$"],
+                correctAnswer: 3,
+                explanation: "$ac^2>bc^2$ ⇒ $c^2>0$，故$a>b$。"
+            },
+            {
+                question: "$'a>b'$是$'ac^2>bc^2'$的（ ）",
+                options: ["充分不必要条件", "必要不充分条件", "充要条件", "既不充分也不必要条件"],
+                correctAnswer: 1,
+                explanation: "$a>b$推不出$ac^2>bc^2$（$c=0$时），但$ac^2>bc^2$能推出$a>b$，故必要不充分。"
+            },
+            {
+                question: "不等式$3x-x^2>0$的解集为（ ）",
+                options: ["$(-∞,0)∪(3,+∞)$", "$(0,3)$", "$∅$", "$R$"],
+                correctAnswer: 1,
+                explanation: "$x(3-x)>0$ ⇒ $0<x<3$。"
+            },
+            {
+                question: "若$a,b,c∈R$，且$a>b>0$，则下列不等式不成立的是（ ）",
+                options: ["$a^2>b^2$", "$\\frac{1}{a}>\\frac{1}{b}$", "$c-a>c-b$", "$\\lg a>\\lg b$"],
+                correctAnswer: 1,
+                explanation: "$a>b>0$ ⇒ $\\frac{1}{a}<\\frac{1}{b}$，故B不成立。"
+            },
+            {
+                question: "若在一台平衡的天平左边托盘拿走20克的砝码，在天平的右边托盘放上50克的砝码，则下列不等式描述了这种现象的是（ ）",
+                options: ["$a+20<a-50$", "$a+20>a-50$", "$a-20<a+50$", "$a-20>a-50$"],
+                correctAnswer: 2,
+                explanation: "原来平衡时质量为$a$，左边拿走20克变为$a-20$，右边加50克变为$a+50$，右边重，故$a-20<a+50$。"
+            },
+            {
+                question: "若$m,n$是任意实数，且$m>n$，则（ ）",
+                options: ["$m^2>n^2$", "$\\frac{m}{n}<1$", "$\\lg(m-n)>0$", "$2^m>2^n$"],
+                correctAnswer: 3,
+                explanation: "指数函数$y=2^x$单调递增。"
+            },
+            {
+                question: "若$a>b$，则下列不等式正确的是（ ）",
+                options: ["$ac^2>bc^2$", "$\\frac{1}{a}>\\frac{1}{b}$", "$a^2<b^2$", "$2^a>2^b$"],
+                correctAnswer: 3,
+                explanation: "指数函数$y=2^x$单调递增。"
+            },
+            {
+                question: "一元二次不等式$x(9-x)>0$的解集是（ ）",
+                options: ["$\\{x|x<0或x>9\\}$", "$\\{x|0<x<9\\}$", "$\\{x|x<-9或x>0\\}$", "$\\{x|-9<x<0\\}$"],
+                correctAnswer: 1,
+                explanation: "$x(9-x)>0$ ⇒ $x(x-9)<0$ ⇒ $0<x<9$。"
+            },
+            {
+                question: "已知实数$x,y,z$，且$x<y$，则下列结论正确的是（ ）",
+                options: ["$x+z>y+z$", "$xz<yz$", "$x-z<y-z$", "$x+y>y+z$"],
+                correctAnswer: 2,
+                explanation: "不等式两边同时减去同一个数，不等号方向不变。"
+            },
+            {
+                question: "已知$a<0$，$-1<b<0$，则$a,ab,ab^2$的大小关系是（ ）",
+                options: ["$a>ab>ab^2$", "$ab^2>ab>a$", "$ab>a>ab^2$", "$ab>ab^2>a$"],
+                correctAnswer: 3,
+                explanation: "$a<0$，$-1<b<0$，则$ab>0$，$ab^2<0$，且$|ab|>|ab^2|$，故$ab>ab^2>a$。"
+            },
+            {
+                question: "若$a,b∈R$，且$a>b$，则下列结论正确的是（ ）",
+                options: ["$\\frac{1}{a}>\\frac{1}{b}$", "$\\frac{1}{a}<\\frac{1}{b}$", "$a^2>b^2$", "$a-3>b-3$"],
+                correctAnswer: 3,
+                explanation: "不等式两边同时减去同一个数，不等号方向不变。"
+            },
+            {
+                question: "不等式$2x^2+x-1<0$的解集为（ ）",
+                options: ["$(-1,\\frac{1}{2})$", "$(-∞,-1)∪(\\frac{1}{2},+∞)$", "$(-\\frac{1}{2},1)$", "$(-∞,-\\frac{1}{2})∪(1,+∞)$"],
+                correctAnswer: 0,
+                explanation: "$(2x-1)(x+1)<0$ ⇒ $-1<x<\\frac{1}{2}$。"
+            },
+            {
+                question: "已知函数$f(x)=\\begin{cases} x^2, & x≥0 \\\\ -x, & x<0 \\end{cases}$，则$f(-1)=$（ ）",
+                options: ["$1$", "$-1$", "$4$", "$-4$"],
+                correctAnswer: 0,
+                explanation: "$-1<0$，所以$f(-1)=-(-1)=1$根据选项，选A。"
+            },
+            {
+                question: "不等式$|2-x|<2$的解集为（ ）",
+                options: ["$(0,4)$", "$(0,2)$", "$(-2,4)$", "$(2,4)$"],
+                correctAnswer: 0,
+                explanation: "$|2-x|<2$ ⇒ $-2<2-x<2$ ⇒ $-4<-x<0$ ⇒ $0<x<4$。"
+            },
+            {
+                question: "已知$x>y$，下列不等式成立的是（ ）",
+                options: ["$x^2>y^2$", "$\\frac{1}{x}>\\frac{1}{y}$", "$x-1>y-2$", "$x+1>y+3$"],
+                correctAnswer: 2,
+                explanation: "$x>y$ ⇒ $x-1>y-1$，又$y-1>y-2$，所以$x-1>y-2$。"
+            },
+            {
+                question: "不等式$(x+2)(3-x)≥0$的解集为（ ）",
+                options: ["$(-∞,-2)∪(3,+∞)$", "$(-∞,-2]∪[3,+∞)$", "$(-2,3)$", "$[-2,3]$"],
+                correctAnswer: 3,
+                explanation: "$(x+2)(3-x)≥0$ ⇒ $(x+2)(x-3)≤0$ ⇒ $-2≤x≤3$。"
+            },
+            {
+                question: "已知$a>b>c$，且$a+b+c=0$，下列不等式一定成立的是（ ）",
+                options: ["$\\frac{1}{a}<\\frac{1}{b}$", "$ab>bc$", "$ab>ac$", "$ac>bc$"],
+                correctAnswer: 2,
+                explanation: "$a>b>c$且$a+b+c=0$，则$a>0,c<0$，所以$ab>ac$（因为$a>0,b>c$）。"
+            },
+            {
+                question: "若$a,b,c∈R$，且$a>b$，下列不等式恒成立的是（ ）",
+                options: ["$\\frac{1}{a}<\\frac{1}{b}$", "$ac>bc$", "$a+c>b+c$", "$c-a>c-b$"],
+                correctAnswer: 2,
+                explanation: "不等式两边同时加上同一个数，不等号方向不变。"
+            },
+            {
+                question: "若$a>b$，$c>d$，则（ ）",
+                options: ["$a-c>b-d$", "$ac>bd$", "$a^c>b^d$", "$a-d>b-c$"],
+                correctAnswer: 3,
+                explanation: "由$a>b$，$c>d$得$-c<-d$，相加得$a-c<b-d$，故A错；BD不一定；D：$a-d>b-c$等价于$a+c>b+d$，由已知成立。"
+            },
+            {
+                question: "含绝对值不等式$|3x-1|<5$的解集为（ ）",
+                options: ["$(-2,2)$", "$(-\\frac{4}{3},2)$", "$(-\\frac{4}{3},2)$", "$(-2,\\frac{4}{3})$"],
+                correctAnswer: 1,
+                explanation: "$|3x-1|<5$ ⇒ $-5<3x-1<5$ ⇒ $-4<3x<6$ ⇒ $-\\frac{4}{3}<x<2$。"
+            },
+            {
+                question: "为了美化校园，学校决定利用现有的2660盆甲种花卉和3000盆乙种花卉搭配$A,B$两种园艺造型共50个摆放在校园内，已知搭配一个$A$种造型需甲种花卉70盆，乙种花卉30盆，搭配一个$B$种造型需甲种花卉40盆，乙种花卉80盆．设搭配$A$种造型$x$个，则下列符合题意的不等式组是（ ）",
+                options: ["$\\begin{cases} 70x+40(50-x)≤2660 \\\\ 30x+80(50-x)≤3000 \\end{cases}$", "$\\begin{cases} 70x+40(50-x)≥2660 \\\\ 30x+80(50-x)≥3000 \\end{cases}$", "$\\begin{cases} 70x+40(50-x)≤2660 \\\\ 30x+80(50-x)≥3000 \\end{cases}$", "$\\begin{cases} 70x+40(50-x)≥2660 \\\\ 30x+80(50-x)≤3000 \\end{cases}$"],
+                correctAnswer: 0,
+                explanation: "甲种花卉不超过2660，乙种花卉不超过3000，且总数为50个。"
+            },
+            {
+                question: "不等式$|-\\frac{x}{2}|≤3$的解集为（ ）",
+                options: ["$[-6,6]$", "$(-6,6)$", "$(-∞,-6]∪[6,+∞)$", "$(-∞,-6)∪(6,+∞)$"],
+                correctAnswer: 0,
+                explanation: "$|\\frac{x}{2}|≤3$ ⇒ $|x|≤6$ ⇒ $-6≤x≤6$。"
+            },
+            {
+                question: "若关于$x$的不等式$|x+2|<a-3$的解集为$∅$，则实数$a$的取值范围是（ ）",
+                options: ["$(3,+∞)$", "$[3,+∞)$", "$(-∞,3]$", "$(-∞,3)$"],
+                correctAnswer: 2,
+                explanation: "$|x+2|<a-3$无解，则$a-3≤0$，即$a≤3$。"
+            },
+            {
+                question: "已知$|x-a|<b$的解集是$\\{x|-3<x<9\\}$，则实数$a,b$的值是（ ）",
+                options: ["$a=-3,b=6$", "$a=-3,b=-6$", "$a=6,b=3$", "$a=3,b=6$"],
+                correctAnswer: 3,
+                explanation: "$|x-a|<b$ ⇒ $a-b<x<a+b$，所以$a-b=-3$，$a+b=9$，解得$a=3,b=6$。"
+            },
+            {
+                question: "不等式$3|x|-2≤7$的解集为（ ）",
+                options: ["$\\{x|x≥±3\\}$", "$\\{x|x≥3\\}$", "$\\{x|-3≤x≤3\\}$", "$\\{x|x≤-3或x≥3\\}$"],
+                correctAnswer: 2,
+                explanation: "$3|x|≤9$ ⇒ $|x|≤3$ ⇒ $-3≤x≤3$。"
+            },
+            {
+                question: "不等式$|5-x|>7$的解集为（ ）",
+                options: ["$\\{x|x>12\\}$", "$\\{x|-2<x<12\\}$", "$\\{x|x<-2且x>12\\}$", "$\\{x|x<-2或x>12\\}$"],
+                correctAnswer: 3,
+                explanation: "$|5-x|>7$ ⇒ $5-x>7$或$5-x<-7$ ⇒ $x<-2$或$x>12$。"
+            },
+            {
+                question: "不等式$-x^2-|x|+6>0$的解集为（ ）",
+                options: ["$\\{x|-2<x<3\\}$", "$\\{x|-2<x<2\\}$", "$\\{x|x<-2或x>3\\}$", "$\\{x|x<-3或x>2\\}$"],
+                correctAnswer: 1,
+                explanation: "令$t=|x|≥0$，则$-t^2-t+6>0$ ⇒ $t^2+t-6<0$ ⇒ $(t+3)(t-2)<0$ ⇒ $-3<t<2$，结合$t≥0$得$0≤t<2$，即$|x|<2$，$-2<x<2$。"
+            },
+            {
+                question: "不等式$x^2-2025x-2026>0$的解集为（ ）",
+                options: ["$\\{x|-2026<x<1\\}$", "$\\{x|x>1或x<-2026\\}$", "$\\{x|-1<x<2026\\}$", "$\\{x|x<-1或x>2026\\}$"],
+                correctAnswer: 3,
+                explanation: "$(x-2026)(x+1)>0$ ⇒ $x<-1$或$x>2026$。"
+            },
+            {
+                question: "若关于$x$的不等式组$\\begin{cases} x>1 \\\\ x>m+1 \\end{cases}$的解集是$(1,+∞)$，则实数$m$的取值范围是（ ）",
+                options: ["$[1,+∞)$", "$(-∞,1]$", "$[0,+∞)$", "$(-∞,0]$"],
+                correctAnswer: 3,
+                explanation: "解集为$(1,+∞)$，则$m+1≤1$，即$m≤0$。"
+            },
+            {
+                question: "不等式组$\\begin{cases} x+2>0 \\\\ x-3≤0 \\end{cases}$的解集是（ ）",
+                options: ["$(-2,3]$", "$(-2,3)$", "$(-∞,-2]$", "$(-∞,-2)$"],
+                correctAnswer: 0,
+                explanation: "$x>-2$且$x≤3$，即$(-2,3]$。"
+            },
+            {
+                question: "不等式组$\\begin{cases} 2x+1>0 \\\\ 4-x≥3 \\end{cases}$的解集是（ ）",
+                options: ["$(-\\frac{1}{2},1]$", "$(-\\frac{1}{2},2)$", "$(2,+∞)$", "$(-∞,2)$"],
+                correctAnswer: 0,
+                explanation: "$x>-\\frac{1}{2}$且$x≤1$，即$(-\\frac{1}{2},1]$。"
+            },
+            {
+                question: "已知一个等差数列的首项为$\\frac{1}{3}$，从第10项开始比1大，则公差$d$的取值范围是（ ）",
+                options: ["$\\{d|d>\\frac{8}{27}\\}$", "$\\{d|d>\\frac{2}{9}\\}$", "$\\{d|d>\\frac{8}{27}\\}$", "$\\{d|\\frac{2}{9}<d<\\frac{8}{27}\\}$"],
+                correctAnswer: 3,
+                explanation: "第10项$a_{10}=a_1+9d>1$，且第9项$a_9=a_1+8d≤1$，代入$a_1=\\frac{1}{3}$解得$\\frac{2}{9}<d≤\\frac{8}{27}$，但“从第10项开始比1大”意味着第9项≤1，第10项>1，故$\\frac{2}{9}<d<\\frac{8}{27}$。"
+            },
+            {
+                question: "甲、乙两人沿同一公路由$A$地到达$B$地，甲走一半路程后跑步前进，乙走一半时间后也跑步前进，设甲、乙两人走的速度相同，跑的速度也相同，则甲、乙两人从$A$地到$B$地的时间$t_甲,t_乙$满足（ ）",
+                options: ["$t_甲<t_乙$", "$t_甲=t_乙$", "$t_甲>t_乙$", "无法比较"],
+                correctAnswer: 2,
+                explanation: "乙的平均速度更高，所以乙用时更短。"
+            },
+            {
+                question: "已知关于$x$的不等式$mx^2+2mx+1<0$的解集为$∅$，则实数$m$的取值范围是（ ）",
+                options: ["$(0,1)$", "$(0,1]$", "$[0,1]$", "$[0,1)$"],
+                correctAnswer: 2,
+                explanation: "当$m=0$时，$1<0$不成立，解集为$∅$；当$m>0$时，需判别式$Δ≤0$，即$4m^2-4m≤0$，解得$0≤m≤1$；当$m<0$时，开口向下，不可能恒小于0。综上$0≤m≤1$。"
+            },
+            {
+                question: "已知关于$x$的不等式$ax^2+ax-2>0$的解集为$∅$，则实数$a$的取值范围是（ ）",
+                options: ["$[0,4]$", "$[0,8)$", "$[-8,0]$", "$\\{0\\}$"],
+                correctAnswer: 2,
+                explanation: "解集为空，则$a≤0$且判别式$Δ≤0$，即$a^2+8a≤0$，解得$-8≤a≤0$。当$a=0$时，$-2>0$不成立，解集为空。故$a∈[-8,0]$。"
+            }
+        ];
+
+        // 全局变量
+        let selectedQuestions = [];
+        let userAnswers = [];
+        let studentName = "";
+        let pageInitialized = false;
+        
+        // DOM元素引用
+        let startBtn, submitBtn, resetBtn, questionsContainer, questionsList;
+        let resultContainer, scoreDisplay, studentInfoDisplay, dateDisplay;
+        let resultDetails, studentNameInput, nameError;
+
+        // 初始化页面
+        function initPage() {
+            console.log("页面初始化...");
+            
+            // 防止重复初始化
+            if (pageInitialized) {
+                console.log("页面已初始化，跳过");
+                return;
+            }
+            pageInitialized = true;
+            
+            // 获取DOM元素
+            startBtn = document.getElementById('startBtn');
+            submitBtn = document.getElementById('submitBtn');
+            resetBtn = document.getElementById('resetBtn');
+            questionsContainer = document.getElementById('questionsContainer');
+            questionsList = document.getElementById('questionsList');
+            resultContainer = document.getElementById('resultContainer');
+            scoreDisplay = document.getElementById('scoreDisplay');
+            studentInfoDisplay = document.getElementById('studentInfoDisplay');
+            dateDisplay = document.getElementById('dateDisplay');
+            resultDetails = document.getElementById('resultDetails');
+            studentNameInput = document.getElementById('studentName');
+            nameError = document.getElementById('nameError');
+            
+            // 设置当前日期
+            const today = new Date();
+            const dateString = today.toLocaleDateString('zh-CN', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long'
+            });
+            
+            // 为日期显示元素设置内容
+            if (dateDisplay) {
+                dateDisplay.textContent = `日期：${dateString}`;
+            }
+            
+            // 绑定事件监听器
+            if (startBtn) {
+                startBtn.addEventListener('click', startPractice);
+                console.log("开始按钮事件监听器已绑定");
+            }
+            
+            if (submitBtn) {
+                submitBtn.addEventListener('click', submitAnswers);
+            }
+            
+            if (resetBtn) {
+                resetBtn.addEventListener('click', resetPractice);
+            }
+            
+            // 添加键盘事件支持
+            if (studentNameInput) {
+                studentNameInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        startPractice();
+                    }
+                });
+            }
+            
+            console.log("页面初始化完成");
+        }
+
+        // 开始练习
+        function startPractice() {
+            console.log("开始练习函数被调用");
+            
+            if (!studentNameInput) {
+                console.error("studentNameInput元素未找到");
+                return;
+            }
+            
+            studentName = studentNameInput.value.trim();
+            
+            if (!studentName) {
+                nameError.textContent = "请输入您的姓名！";
+                nameError.style.display = 'block';
+                studentNameInput.focus();
+                return;
+            }
+            
+            // 隐藏错误信息
+            nameError.style.display = 'none';
+            
+            // 随机选择10道题目
+            selectedQuestions = getRandomQuestions(10);
+            console.log("已选择题目:", selectedQuestions.length);
+            
+            // 初始化用户答案数组
+            userAnswers = new Array(selectedQuestions.length).fill(-1);
+            
+            // 生成题目HTML
+            generateQuestionsHTML();
+            
+            // 显示题目容器，隐藏学生信息
+            const studentInfo = document.querySelector('.student-info');
+            if (studentInfo) {
+                studentInfo.style.display = 'none';
+            }
+            
+            if (questionsContainer) {
+                questionsContainer.style.display = 'block';
+                console.log("题目容器已显示");
+            }
+            
+            if (resultContainer) {
+                resultContainer.style.display = 'none';
+            }
+            
+            // 滚动到题目区域
+            if (questionsContainer) {
+                questionsContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // 从题库中随机选择题目
+        function getRandomQuestions(count) {
+            // 复制题库
+            const shuffled = [...questionBank];
+            
+            // Fisher-Yates洗牌算法
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            
+            // 返回前count个题目
+            return shuffled.slice(0, count);
+        }
+        
+        // HTML实体转义函数
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+        
+        // 生成题目HTML
+        function generateQuestionsHTML() {
+            console.log("生成题目HTML");
+            
+            if (!questionsList) {
+                console.error("questionsList元素未找到");
+                return;
+            }
+            
+            questionsList.innerHTML = '';
+            
+            // 重置问题计数器
+            questionsList.style.counterReset = 'question-counter';
+            
+            selectedQuestions.forEach((question, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                
+                const questionText = document.createElement('div');
+                questionText.className = 'question-text';
+                
+                // 对题目文本进行转义处理，但保留MathJax分隔符
+                let escapedQuestion = escapeHtml(question.question);
+                // 恢复MathJax分隔符
+                escapedQuestion = escapedQuestion
+                    .replace(/&amp;#92;\(/g, '\\(')
+                    .replace(/&amp;#92;\)/g, '\\)')
+                    .replace(/&amp;#92;\[/g, '\\[')
+                    .replace(/&amp;#92;\]/g, '\\]')
+                    .replace(/&amp;#92;\{/g, '\\{')
+                    .replace(/&amp;#92;\}/g, '\\}')
+                    .replace(/\$/g, '$')
+                    .replace(/&amp;lt;/g, '<')
+                    .replace(/&amp;gt;/g, '>');
+                
+                questionText.innerHTML = escapedQuestion;
+                
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'options';
+                
+                question.options.forEach((option, optionIndex) => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'option';
+                    optionDiv.dataset.index = optionIndex;
+                    
+                    const input = document.createElement('input');
+                    input.type = 'radio';
+                    input.name = `question-${index}`;
+                    input.value = optionIndex;
+                    input.id = `q${index}-option${optionIndex}`;
+                    
+                    // 添加事件监听器
+                    input.addEventListener('change', function() {
+                        userAnswers[index] = parseInt(this.value);
+                        
+                        // 更新选项样式
+                        const options = questionDiv.querySelectorAll('.option');
+                        options.forEach(opt => opt.classList.remove('selected'));
+                        optionDiv.classList.add('selected');
+                    });
+                    
+                    const label = document.createElement('label');
+                    label.htmlFor = input.id;
+                    
+                    // 对选项文本进行转义处理
+                    let escapedOption = escapeHtml(option);
+                    // 恢复MathJax分隔符
+                    escapedOption = escapedOption
+                        .replace(/&amp;#92;\(/g, '\\(')
+                        .replace(/&amp;#92;\)/g, '\\)')
+                        .replace(/&amp;#92;\[/g, '\\[')
+                        .replace(/&amp;#92;\]/g, '\\]')
+                        .replace(/&amp;#92;\{/g, '\\{')
+                        .replace(/&amp;#92;\}/g, '\\}')
+                        .replace(/\$/g, '$')
+                        .replace(/&amp;lt;/g, '<')
+                        .replace(/&amp;gt;/g, '>');
+                    
+                    label.innerHTML = escapedOption;
+                    
+                    optionDiv.appendChild(input);
+                    optionDiv.appendChild(label);
+                    optionsDiv.appendChild(optionDiv);
+                    
+                    // 添加点击事件到整个选项div
+                    optionDiv.addEventListener('click', function() {
+                        input.checked = true;
+                        input.dispatchEvent(new Event('change'));
+                    });
+                });
+                
+                // 答案反馈区域
+                const feedbackDiv = document.createElement('div');
+                feedbackDiv.className = 'answer-feedback';
+                feedbackDiv.id = `feedback-${index}`;
+                
+                questionDiv.appendChild(questionText);
+                questionDiv.appendChild(optionsDiv);
+                questionDiv.appendChild(feedbackDiv);
+                questionsList.appendChild(questionDiv);
+            });
+            
+            console.log("题目HTML生成完成");
+            
+            // 使用setTimeout确保DOM更新后再触发MathJax渲染
+            setTimeout(() => {
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    console.log("触发MathJax重新渲染");
+                    try {
+                        // 只重新渲染新添加的内容
+                        window.MathJax.typesetPromise([questionsList]);
+                    } catch (error) {
+                        console.error("MathJax渲染错误:", error);
+                    }
+                } else if (window.MathJax && window.MathJax.Hub) {
+                    // 兼容旧版本MathJax
+                    window.MathJax.Hub.Queue(["Typeset", window.MathJax.Hub, questionsList]);
+                }
+            }, 100);
+        }
+        
+        // 提交答案
+        function submitAnswers() {
+            console.log("提交答案");
+            
+            // 检查是否所有题目都已作答
+            const unanswered = userAnswers.filter(answer => answer === -1);
+            
+            if (unanswered.length > 0) {
+                alert(`您还有${unanswered.length}道题目未作答，请完成所有题目后再提交。`);
+                return;
+            }
+            
+            // 计算得分
+            let score = 0;
+            let resultHTML = "<h3>题目详情：</h3><ul style='list-style-type:none; padding-left:0;'>";
+            
+            selectedQuestions.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                const isCorrect = userAnswer === question.correctAnswer;
+                
+                if (isCorrect) {
+                    score++;
+                }
+                
+                // 显示每道题的答案和反馈
+                resultHTML += `
+                    <li style="margin-bottom:15px; padding:10px; background-color:#f8f9fa; border-radius:5px;">
+                        <div><strong>题目${index+1}:</strong> ${question.question}</div>
+                        <div>您的答案: <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">${question.options[userAnswer]}</span></div>
+                        <div>正确答案: <span class="correct-answer">${question.options[question.correctAnswer]}</span></div>
+                        <div>解析: ${question.explanation}</div>
+                    </li>
+                `;
+                
+                // 在题目下方显示反馈
+                const feedbackDiv = document.getElementById(`feedback-${index}`);
+                if (feedbackDiv) {
+                    feedbackDiv.innerHTML = `
+                        <div>您的答案: <span class="${isCorrect ? 'correct-answer' : 'wrong-answer'}">${question.options[userAnswer]}</span></div>
+                        <div>正确答案: <span class="correct-answer">${question.options[question.correctAnswer]}</span></div>
+                        <div>解析: ${question.explanation}</div>
+                    `;
+                    feedbackDiv.style.display = 'block';
+                }
+            });
+            
+            resultHTML += "</ul>";
+            
+            // 显示结果
+            if (scoreDisplay) {
+                scoreDisplay.textContent = `${score}/10`;
+            }
+            
+            if (studentInfoDisplay) {
+                studentInfoDisplay.textContent = `姓名: ${studentName}`;
+            }
+            
+            if (resultDetails) {
+                resultDetails.innerHTML = resultHTML;
+            }
+            
+            // 显示结果容器
+            if (resultContainer) {
+                resultContainer.style.display = 'block';
+            }
+            
+            // 滚动到结果区域
+            if (resultContainer) {
+                resultContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            // 触发MathJax重新渲染结果中的公式
+            setTimeout(() => {
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    try {
+                        window.MathJax.typesetPromise([resultDetails]);
+                    } catch (error) {
+                        console.error("MathJax渲染错误:", error);
+                    }
+                }
+            }, 200);
+        }
+        
+        // 重新开始
+        function resetPractice() {
+            console.log("重新开始");
+            
+            // 重置所有状态
+            selectedQuestions = [];
+            userAnswers = [];
+            
+            // 显示学生信息输入，隐藏其他
+            const studentInfo = document.querySelector('.student-info');
+            if (studentInfo) {
+                studentInfo.style.display = 'block';
+            }
+            
+            if (questionsContainer) {
+                questionsContainer.style.display = 'none';
+            }
+            
+            if (resultContainer) {
+                resultContainer.style.display = 'none';
+            }
+            
+            // 清空姓名输入框和错误信息
+            if (studentNameInput) {
+                studentNameInput.value = '';
+                studentNameInput.focus();
+            }
+            
+            if (nameError) {
+                nameError.style.display = 'none';
+            }
+            
+            // 滚动到顶部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM已加载，开始初始化页面");
+            initPage();
+        });
+    </script>
+</body>
+</html>
